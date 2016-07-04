@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :rememberable, :validatable
   has_many :activities, dependent: :destroy
   has_many :lessons, dependent: :destroy
   has_many :active_relationships, class_name: Follow.name,

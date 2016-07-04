@@ -46,3 +46,10 @@ en:
       profile: "Profile"
       settings: "Settings"
       title: "E - learning"
+  sessions:
+    new:
+      title: "Log in"
+      remember: "Remember me on this computer"
+      newuser: "New user"
+      danger: "Invalid email/password combinaion"
+  signup: "Sign up"
