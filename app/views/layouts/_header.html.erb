@@ -2,8 +2,15 @@
   <div class="container">
     <%= link_to t("layouts.header.title"), root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right item_header">
+      <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("layouts.header.home"), root_path %></li>
+        <% if user_signed_in? %>
+          <%= link_to t("layouts.header.logout"), destroy_user_session_path,
+            method: :delete %>
+        <% else %>
+          <li><%= link_to t("layouts.header.login"), new_user_session_path
+            %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
