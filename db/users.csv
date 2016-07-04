@@ -1,0 +1,3 @@
+name,email,password,password_confirmation,is_admin
+Nguyen Huu Tien,nguyen.huu.tien@framgia.com,12345678,12345678,true
+Nguyen Vu Quang,nguyen.vu.quang@framgia.com,12345678,12345678,true

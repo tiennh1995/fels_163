@@ -1,0 +1,24 @@
+<% if can? :manage, @users %>
+  <h1><%= t "users.all" %></h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%= t "users.name" %></th>
+        <th><%= t "users.email" %></th>
+        <th><%= t "users.created_at" %></th>
+        <th><%= t "users.control" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.email %></td>
+          <td><%= l user.created_at, format: :default %></td>
+          <td><%= link_to t(:delete), admin_user_path(user),
+            method: :delete, data: {confirm: t(:confirm)} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -20,6 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  datetime: &datetime
+    formats:
+      default: "%d/%m/%Y"
+      short: "%m - %Y"
+      day_month: "%d/%m"
+      long: "%H:%M, %d/%m,%Y"
+
+  date:
+    <<: *datetime
+
+  time:
+    <<: *datetime
+
   hello: "Hello world"
   sign_up: "Sign up"
   static_pages:
@@ -53,3 +66,16 @@ en:
       remember: "Remember me on this computer"
       newuser: "New user"
       danger: "Invalid email/password combinaion"
+  login_danger: "Please log in"
+  destroy:
+    success: "Destroy success!"
+    danger: "Destroy fail!"
+  delete: "Delete"
+  confirm: "You sure?"
+  users:
+    name: "Name"
+    email: "Email"
+    created_at: "Join date"
+    control: "Control"
+    all: "All Users"
+  not_authorized: "You are not authorized to access this page"
