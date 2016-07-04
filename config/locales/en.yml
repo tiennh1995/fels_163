@@ -21,3 +21,28 @@
 
 en:
   hello: "Hello world"
+  static_pages:
+    about:
+      title: "About"
+    help:
+      title: "Help"
+      name: "Framgia Viet Nam Co.,Ltd"
+      address: "13F, KeangNam LandMark 72 Building, E6 Pham Hung, Tu Liem, HN"
+      phone: "Tel: 04 3795 5417"
+    home:
+      title: "Welcome to Framgia Training System"
+      signup: "Sign up now!"
+  layouts:
+    footer:
+      about: "About"
+      help: "Help"
+      copyright: "@Copyright by team TQ"
+    header:
+      home: "Home"
+      login: "Log in"
+      logout: "Log out"
+      account: "Account"
+      users: "Users"
+      profile: "Profile"
+      settings: "Settings"
+      title: "E - learning"
