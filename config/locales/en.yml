@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  sign_up: "Sign up"
   static_pages:
     about:
       title: "About"
@@ -52,4 +53,3 @@ en:
       remember: "Remember me on this computer"
       newuser: "New user"
       danger: "Invalid email/password combinaion"
-  signup: "Sign up"
