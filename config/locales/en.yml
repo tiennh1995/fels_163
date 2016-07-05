@@ -64,6 +64,7 @@ en:
       title: "E - learning"
       words: "Words"
       category: "Categories"
+      add_word: "Add word"
   sessions:
     new:
       title: "Log in"
@@ -100,3 +101,15 @@ en:
   searches:
     title: "Search....."
     category: "Select category"
+  words:
+    new: "New Word"
+  create: "Create"
+  success: "Success!"
+  danger: "Fail"
+  error:
+    title: "The form contains"
+    _error: "error"
+  answer:
+    new: "New answer"
+    remove: "Remove answer"
+    title: "Answer"
