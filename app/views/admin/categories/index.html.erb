@@ -2,14 +2,16 @@
   <h1><%= t "category.index" %></h1>
   <%= link_to t(:create), new_admin_category_path,
     class: "btn btn-primary pull-right btn-sm" %>
-  <%= search_form_for [:admin, @q] do |f| %>
-    <div class="field">
-      <%= f.label :name_cont, t("category.name") %>
-      <%= f.text_field :name_cont %>
-    </div>
-    <%= f.submit t(:search) %>
-  <% end %>
   <table class="table table-bordered">
+  <div class="container">
+    <%= search_form_for [:admin, @q] do |f| %>
+      <div class="field">
+        <%= f.label :name_cont, t("category.name") %>
+        <%= f.text_field :name_cont %>
+      </div>
+      <%= f.submit t(:search) %>
+    <% end %>
+  </div>
     <tr>
       <th><%= sort_link @q, :name, t("category.name") %></th>
       <th><%= sort_link @q, :created_at, t(:created_at) %></th>

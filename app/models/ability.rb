@@ -11,6 +11,8 @@ class Ability
       end
     else
       can :read, :Category
+      can :read, :Word
+      can :read, :Answer
     end
   end
 end

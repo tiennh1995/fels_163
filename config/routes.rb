@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:index, :destroy]
     resources :categories, except: [:destroy, :edit, :update]
+    resources :words, only: [:index, :show]
   end
 end

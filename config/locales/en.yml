@@ -62,6 +62,8 @@ en:
       profile: "Profile"
       settings: "Settings"
       title: "E - learning"
+      words: "Words"
+      category: "Categories"
   sessions:
     new:
       title: "Log in"
@@ -91,3 +93,7 @@ en:
     created_category: "New category added"
   created_at: "Created at"
   control: "Control"
+  word:
+    index: "All Words"
+    title: "Title"
+    category: "Category"
