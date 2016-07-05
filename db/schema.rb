@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 20160704055859) do
     t.string   "name"
     t.text     "about"
     t.boolean  "is_admin",               default: false
-    t.boolean  "is_activated"
     t.string   "avatar"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false

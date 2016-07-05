@@ -35,6 +35,8 @@ en:
 
   hello: "Hello world"
   sign_up: "Sign up"
+  characters_minimum: "(%{number} characters_minimum)"
+
   static_pages:
     about:
       title: "About"
@@ -70,13 +72,22 @@ en:
   destroy:
     success: "Destroy success!"
     danger: "Destroy fail!"
+  create: "Create"
   delete: "Delete"
   confirm: "You sure?"
+  search: "Search"
   users:
     name: "Name"
     email: "Email"
     created_at: "Join date"
-    control: "Control"
     all: "All Users"
   not_authorized: "You are not authorized to access this page"
   search: "Search"
+  category:
+    index: "All category"
+    name: "Name"
+    new: "New category"
+    newname: "Enter category name"
+    created_category: "New category added"
+  created_at: "Created at"
+  control: "Control"
