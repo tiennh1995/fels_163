@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :name, presence: true, length: {maximum: 50}
+
+  scope :not_admin, ->{where is_admin: false}
 end

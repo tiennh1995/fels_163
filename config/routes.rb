@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
 
+  resources :users, only: [:show, :index]
   namespace :admin do
     root "users#index"
+    resources :users, only: [:index, :destroy]
   end
 end
