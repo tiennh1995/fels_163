@@ -97,3 +97,6 @@ en:
     index: "All Words"
     title: "Title"
     category: "Category"
+  searches:
+    title: "Search....."
+    category: "Select category"

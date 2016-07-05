@@ -156,11 +156,6 @@ input, textarea, select, .uneditable-input {
   width: 100%;
 }
 
-input {
-  height: auto !important;
-  margin-bottom: 15px;
-}
-
 table {
   background-color: #fff;
 }
@@ -168,4 +163,13 @@ table {
 .correct_answer {
   @extend .well;
   background-color: #37b2db;
+}
+.search_form {
+  width: 70% !important;
+}
+.search_button {
+  width: 100px;
+}
+.btn-md {
+  margin: 10px 25px;
 }
