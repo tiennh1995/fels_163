@@ -79,3 +79,4 @@ en:
     control: "Control"
     all: "All Users"
   not_authorized: "You are not authorized to access this page"
+  search: "Search"

@@ -1,14 +1,23 @@
 <% if can? :manage, @users %>
   <h1><%= t "users.all" %></h1>
+  <%= search_form_for [:admin, @q] do |f| %>
+    <div class="field">
+      <%= f.label :name_cont, t("users.name") %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :email_start, t("users.email") %>
+      <%= f.text_field :email_start %>
+    </div>
+    <%= f.submit t(:search) %>
+  <% end %>
   <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th><%= t "users.name" %></th>
-        <th><%= t "users.email" %></th>
-        <th><%= t "users.created_at" %></th>
-        <th><%= t "users.control" %></th>
-      </tr>
-    </thead>
+    <tr>
+      <th><%= sort_link @q, :name, t("users.name") %></th>
+      <th><%= sort_link @q, :email, t("users.email") %></th>
+      <th><%= sort_link @q, :created_at, t("users.created_at") %></th>
+      <th><%= t "users.control" %></th>
+    </tr>
     <tbody>
       <% @users.each do |user| %>
         <tr>
