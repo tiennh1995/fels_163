@@ -7,6 +7,8 @@
           <% if current_user.is_admin? %>
             <li><%= link_to t("layouts.header.home"), admin_root_path %></li>
             <li><%= link_to t("layouts.header.users"), admin_root_path %></li>
+            <li><%= link_to t("layouts.header.categories"),
+              admin_categories_path %></li>
           <% else %>
             <li><%= link_to t("layouts.header.home"), root_path %></li>
             <li><%= link_to t("layouts.header.users"), users_path %></li>

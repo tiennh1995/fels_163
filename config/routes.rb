@@ -14,5 +14,7 @@ Rails.application.routes.draw do
         match "search" => "admin#users#index", via: [:get, :post], as: :search
       end
     end
+    resources :users, only: [:index, :destroy]
+    resources :categories, except: [:destroy, :edit, :update]
   end
 end

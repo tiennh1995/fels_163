@@ -10,7 +10,7 @@ class Ability
         other_user.is_admin?
       end
     else
-      cannot :manage, :all
+      can :read, :Category
     end
   end
 end
