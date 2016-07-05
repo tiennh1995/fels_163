@@ -1,0 +1,33 @@
+<h1><%= t "word.index" %></h1>
+<table class="table table-bordered">
+  <div class="container">
+    <%= search_form_for [:admin, @q] do |f| %>
+      <div class="field">
+        <%= f.label :title_cont, t("word.title") %>
+        <%= f.text_field :title_cont %>
+      </div>
+      <%= f.submit t(:search) %>
+    <% end %>
+  </div>
+  <%= link_to t(:create), "#",
+    class: "btn btn-primary pull-right btn-sm" %>
+  <tr>
+    <th><%= sort_link @q, :title, t("word.title") %></th>
+    <th><%= sort_link @q, :category_name, t("word.category") %></th>
+    <th><%= sort_link @q, :created_at, t(:created_at) %></th>
+    <th><%= t(:control) %></th>
+  </tr>
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= link_to word.title, [:admin, word] %></td>
+        <td>
+          <%= link_to word.category.name, admin_category_path(word.category) %>
+        </td>
+        <td><%= l word.created_at, format: :default %></td>
+        <td><%= link_to t(:delete), "#",
+          method: :delete, data: {confirm: t(:confirm)} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

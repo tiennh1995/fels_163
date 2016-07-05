@@ -164,3 +164,8 @@ input {
 table {
   background-color: #fff;
 }
+
+.correct_answer {
+  @extend .well;
+  background-color: #37b2db;
+}
