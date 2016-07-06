@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :categories, except: [:destroy, :edit, :update]
-    resources :words, except: [:edit, :destroy, :update]
+    resources :words
     resources :answers, only: :create
   end
 end

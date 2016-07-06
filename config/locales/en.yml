@@ -105,6 +105,7 @@ en:
   words:
     new: "New Word"
   create: "Create"
+  save: "Save"
   success: "Success!"
   danger: "Fail"
   error:
