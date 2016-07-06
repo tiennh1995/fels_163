@@ -2,7 +2,8 @@
   <div class="col-md-6">
     <div class="panel panel-default text-center">
       <h3><%= @word.title %></h3><hr>
-      <%= image_tag(@word.image.url, size: Settings.size_book) unless @word.image.nil? %>
+      <%= image_tag(@word.image.url, size: Settings.size_book) unless
+        @word.image.nil? %>
       <div class="panel-body">
         <ul>
           <%= render @word.answers %>
