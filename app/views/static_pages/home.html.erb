@@ -4,4 +4,10 @@
     <%= link_to t(:sign_up_now), new_user_registration_path,
       class: "btn btn-lg btn-primary" %>
   </div>
+<% else %>
+  <p>
+    <%= current_user.name %>
+    <%= current_user.current_sign_in_at %>
+    <%= current_user.current_sign_in_ip %>
+  </p>
 <% end %>
