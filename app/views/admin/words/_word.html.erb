@@ -1,5 +1,5 @@
 <h3><%= link_to word.title, [:admin, word] %></h3><hr>
-<%= image_tag word.image.url, size: Settings.size_word %>
+<%= image_tag word.image.url, size: Settings.size_word unless word.image.nil? %>
 <div class="panel-body" id="answers_<%= @word.id %>">
   <ul>
     <%= render "shared/word_answers", answers: word.answers %>
