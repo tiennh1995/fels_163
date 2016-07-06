@@ -6,7 +6,6 @@
         <% if user_signed_in? %>
           <% if current_user.is_admin? %>
             <li><%= link_to t("layouts.header.home"), admin_root_path %></li>
-            <li><%= link_to t("layouts.header.users"), admin_root_path %></li>
             <li><%= link_to t("layouts.header.categories"),
               admin_categories_path %></li>
             <li><%= link_to t("layouts.header.words"), admin_words_path %></li>
@@ -21,10 +20,14 @@
               <%= t("layouts.header.account") %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <%= link_to t("layouts.header.logout"), destroy_user_session_path,
-                  method: :delete %>
-              </li>
+              <% if current_user.is_admin? %>
+                <li><%= link_to t("layouts.header.log"), admin_logs_path %></li>
+                <li>
+                  <%= link_to t("layouts.header.users"), admin_users_path %>
+                </li>
+              <% end %>
+              <li><%= link_to t("layouts.header.logout"),
+                destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>

@@ -1,0 +1,17 @@
+<% if can? :manage, @logs %>
+  <div class="container">
+    <ul>
+      <% if @logs.blank? %>
+        <%= t :nothing %>
+      <% else %>
+        <% @logs.each do |log| %>
+          <li>
+            <p><%= t :last_ip, ip: log.last_sign_in_ip %></p>
+            <p><%= t :last_sign_in, time: log.last_sign_in_at %></p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <h5><%= t :current_ip, nowip: current_user.current_sign_in_ip %></h5>
+  </div>
+<% end %>

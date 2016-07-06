@@ -65,6 +65,7 @@ en:
       words: "Words"
       category: "Categories"
       add_word: "Add word"
+      log: "System log"
   sessions:
     new:
       title: "Log in"
@@ -113,3 +114,7 @@ en:
     new: "New answer"
     remove: "Remove answer"
     title: "Answer"
+  nothing: "Opp!!! Nothing in here..."
+  last_ip: "Log in IP: %{ip}"
+  last_sign_in: "Sign in time: %{time}"
+  current_ip: "Current IP: %{nowip}"
