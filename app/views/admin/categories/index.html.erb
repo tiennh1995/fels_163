@@ -12,6 +12,8 @@
     </nav>
     <%= link_to t("category.new"), new_admin_category_path,
       class: "btn btn-primary btn-md" %>
+    <%= link_to t("layouts.header.add_word"), new_admin_word_path,
+      class: "btn btn-primary btn-md" %>
     <table class="table table-bordered">
       <tr>
         <th><%= sort_link @q, :name, t("category.name") %></th>

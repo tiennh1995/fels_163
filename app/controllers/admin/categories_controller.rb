@@ -15,6 +15,8 @@ class Admin::CategoriesController < ApplicationController
       @search = @category.words.ransack params[:q]
       @words = @search.result.paginate page: params[:page],
         per_page: Settings.per_page
+      @word = @category.words.build
+      @word.answers.build
     end
   end
 
