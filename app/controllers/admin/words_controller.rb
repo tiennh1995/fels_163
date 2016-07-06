@@ -1,5 +1,6 @@
 class Admin::WordsController < ApplicationController
   load_and_authorize_resource
+  before_action :load_category, only: [:new, :edit]
 
   def index
     @categories = Category.all
@@ -12,21 +13,46 @@ class Admin::WordsController < ApplicationController
   end
 
   def new
-    @categories = Category.paginate page:
-      params[:page], per_page: Settings.per_page
     @word.answers.build
   end
 
   def create
     if check_word? && @word.save
-      flash[:success] = t "success"
+      flash[:success] = t :success
       redirect_to [:admin, @word]
     else
-      @categories = Category.paginate page:
-        params[:page], per_page: Settings.per_page
-      flash[:danger] = t "danger"
+      flash[:danger] = t :danger
       render :new
     end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html {redirect_to [:admin, @word]}
+      format.js
+    end
+  end
+
+  def update
+    if @word.update_attributes word_params
+      flash[:success] = t :success
+      respond_to do |format|
+        format.html {redirect_to [:admin, @word]}
+        format.js
+      end
+    else
+      flash[:danger] = t :danger
+      render :edit
+    end
+  end
+
+  def destroy
+    if @word.destroy
+      flash[:success] = t :success
+    else
+      flash[:danger] = t :danger
+    end
+    redirect_to admin_words_path
   end
 
   private
@@ -42,5 +68,11 @@ class Admin::WordsController < ApplicationController
       end
     end
     false
+  end
+
+  def load_category
+    @categories = Category.paginate page:
+      params[:page], per_page: Settings.per_page
+    @category = @categories.find_by_id params[:category_id]
   end
 end

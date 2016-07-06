@@ -3,7 +3,9 @@
     <div class="panel panel-default text-center">
       <h3><%= @category.name %></h3><hr>
       <div class="panel-body">
+        <%= render @category.words %>
       </div>
     </div>
   </div>
 </div>
+<%= link_to t("words.new"), new_admin_category_word_path(@category)  %>

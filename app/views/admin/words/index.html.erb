@@ -16,13 +16,12 @@
         <% end %>
       </nav>
     </div>
-    <%= link_to t(:create), "#", class: "btn btn-primary btn-md" %>
+    <%= link_to t(:create), new_admin_word_path, class: "btn btn-primary btn-md" %>
     <table class="table table-bordered">
       <tr>
         <th><%= sort_link @q, :title, t("word.title") %></th>
         <th><%= sort_link @q, :category_name, t("word.category") %></th>
         <th><%= sort_link @q, :created_at, t(:created_at) %></th>
-        <th><%= t(:control) %></th>
       </tr>
       <tbody>
         <%= render "index" %>

@@ -1,9 +1,10 @@
 <fieldset>
-  <%= form_for [:admin, @word] do |f| %>
+  <%= form_for [:admin, @category, @word], remote: true do |f| %>
     <%= render "shared/error_messages", object: @word %>
     <%= f.label :category %>
-    <%= f.select :category_id, @categories.collect {|category|
-      [category.name, category.id]} %>
+    <%= @category.nil? ? f.select(:category_id, @categories.collect {|category|
+      [category.name, category.id]}) :
+      f.text_field(:category_id, value: "#{@category.name}", disabled: true) %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <span class="image">
@@ -15,6 +16,6 @@
       <% end %>
     </div>
     <%= link_to_add_fields t("answer.new"), f, :answers %>
-    <%= f.submit t(:create) %>
+    <%= f.submit t :save %>
   <% end %>
 </fieldset>
