@@ -4,9 +4,9 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
+  # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '2af7e46ecfd35886f0055a0ae6605b3214b2762d2e681229aa00282338506dfde36dc4e7e7c167436b362eb9f06fbe09dcfa0f11de98989ca7616c5a5eff6de3'
+  # config.secret_key = 'b30968d4ccf6595ef7c35b8ce009156598ce3eee0e6cea44a062f866672f8a3d504ccd2ea098a0722098371aa4bce4f3e0e3410967c992ee0b4039235ec8fa78'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -16,6 +16,9 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
+
+  # Configure the parent class responsible to send e-mails.
+  # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -87,19 +90,25 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
+  # When false, Devise will not attempt to reload routes on eager load.
+  # This can reduce the time taken to boot the app but if your application
+  # requires the Devise mappings to be loaded during boot time the application
+  # won't boot properly.
+  # config.reload_routes = true
+
   # ==> Configuration for :database_authenticatable
-  # For bcrypt, this is the cost for hashing the password and defaults to 10. If
-  # using other encryptors, it sets how many times you want the password re-encrypted.
+  # For bcrypt, this is the cost for hashing the password and defaults to 11. If
+  # using other algorithms, it sets how many times you want the password to be hashed.
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments. Note that, for bcrypt (the default
-  # encryptor), the cost increases exponentially with the number of stretches (e.g.
+  # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 10
+  config.stretches = Rails.env.test? ? 1 : 11
 
-  # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'b2a5ddf64e70a37c481bce6c7aa94252a9a1d812d56acf193eb2b232ce21a753cd85c744b87fdf5aacaf1c108a8c75942d3ceacd954061890dc2642c1c12c70c'
+  # Set up a pepper to generate the hashed password.
+  # config.pepper = '635844a13ca8b88c24dbffc1f21fb342a493abd53a22ea7ddd5b8f9d8052e4dcbcdc7285bebc30c3e7c863bde12cbcb4dd2b239708b94b69532e2302f45df9ae'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -145,12 +154,12 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..72
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -198,11 +207,11 @@ Devise.setup do |config|
   # config.sign_in_after_reset_password = true
 
   # ==> Configuration for :encryptable
-  # Allow you to use another encryption algorithm besides bcrypt (default). You can use
-  # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
-  # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
-  # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
-  # REST_AUTH_SITE_KEY to pepper).
+  # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
+  # You can use :sha1, :sha512 or algorithms from others authentication tools as
+  # :clearance_sha1, :authlogic_sha512 (then you should set stretches above to 20
+  # for default behavior) and :restful_authentication_sha1 (then you should set
+  # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
@@ -239,7 +248,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
+  # config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH2_APP_ID'], ENV['GOOGLE_OAUTH2_APP_SECRET'], scope: "email,profile,offline", prompt: "consent"
+  config.omniauth :facebook, "657036517780986", "3df6512bca7dda2ee383c98457c0581a", scope: "email", display: "popup"
+  config.omniauth :twitter, "0tMlVsn7flPue5zGxb4MEutUG", "ZPZAEbKcDp3evQMYH9ldWLibooNvWJ4wwURCJgSmxtReZ69j0x"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

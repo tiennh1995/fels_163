@@ -118,3 +118,4 @@ en:
   last_ip: "Log in IP: %{ip}"
   last_sign_in: "Sign in time: %{time}"
   current_ip: "Current IP: %{nowip}"
+  social_signin: "Sign in with: %{provide}"
