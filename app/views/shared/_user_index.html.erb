@@ -1,0 +1,12 @@
+<% users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, current_user.is_admin? ?
+      [:admin, user] : user %></td>
+    <td><%= user.email %></td>
+    <td><%= l user.created_at, format: :default %></td>
+    <% if can? :destroy, user  %>
+      <td><%= link_to t(:delete), admin_user_path(user),
+        method: :delete, data: {confirm: t(:confirm)} %></td>
+    <% end %>
+  </tr>
+<% end %>

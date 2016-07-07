@@ -1,9 +1,0 @@
-<% @words.each do |word| %>
-  <tr>
-    <td><%= link_to word.title, [:admin, word] %></td>
-    <td>
-      <%= link_to word.category.name, admin_category_path(word.category) %>
-    </td>
-    <td><%= l word.created_at, format: :default %></td>
-  </tr>
-<% end %>
