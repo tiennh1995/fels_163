@@ -1,4 +1,6 @@
-<%= link_to word.title, word %>
-<%= image_tag word.image.url, size: Settings.size_word unless
-  word.image.url.nil? %>
-<hr>
+<% if word.id? %>
+  <%= link_to word.title, word %>
+  <%= image_tag word.image.url, size: Settings.size_word unless
+    word.image.url.nil? %>
+  <hr>
+<% end %>
