@@ -1,0 +1,27 @@
+<% if can? :read, @categories %>
+  <div class="container">
+    <h1><%= t "category.index" %></h1>
+    <nav class="navbar navbar-default search">
+      <%= search_form_for @q, {class: "navbar-form", role: "form"} do |f| %>
+        <%= f.label :title_cont, t("category.name"), class: "sr-only" %>
+        <%= f.text_field :name_cont,placeholder: t("searches.title"),
+          class: "search_form form-control" %>
+        <%= f.submit t(:search), class: "btn btn-primary search_button" %>
+      <% end %>
+    </nav>
+    <table class="table table-bordered">
+      <tr>
+        <th><%= sort_link @q, :name, t("category.name") %></th>
+        <th><%= sort_link @q, :created_at, t(:created_at) %></th>
+      </tr>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= link_to category.name, category %></td>
+            <td><%= l category.created_at, format: :default %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

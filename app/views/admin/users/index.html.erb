@@ -1,33 +1,34 @@
 <% if can? :manage, @users %>
-  <h1><%= t "users.all" %></h1>
-  <%= search_form_for [:admin, @q] do |f| %>
-    <div class="field">
-      <%= f.label :name_cont, t("users.name") %>
-      <%= f.text_field :name_cont %>
-    </div>
-    <div class="field">
-      <%= f.label :email_start, t("users.email") %>
-      <%= f.text_field :email_start %>
-    </div>
-    <%= f.submit t(:search) %>
-  <% end %>
-  <table class="table table-bordered">
-    <tr>
-      <th><%= sort_link @q, :name, t("users.name") %></th>
-      <th><%= sort_link @q, :email, t("users.email") %></th>
-      <th><%= sort_link @q, :created_at, t("users.created_at") %></th>
-      <th><%= t "users.control" %></th>
-    </tr>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to user.name, user %></td>
-          <td><%= user.email %></td>
-          <td><%= l user.created_at, format: :default %></td>
-          <td><%= link_to t(:delete), admin_user_path(user),
-            method: :delete, data: {confirm: t(:confirm)} %></td>
-        </tr>
+  <div class="container">
+    <h1><%= t "users.all" %></h1>
+    <nav class="navbar navbar-default search">
+      <%= search_form_for [:admin, @q],
+        {class: "navbar-form", role: "form"} do |f| %>
+        <%= f.label :name_cont, t("users.name") %>
+        <%= f.text_field :name_cont,placeholder: t("searches.title"),
+          class: "search_form form-control" %>
+        <br>
+        <br>
+        <%= f.label :email_cont,  t("users.email") %>
+        <%= f.text_field :email_cont,placeholder: t("searches.title"),
+          class: "search_form form-control" %>
+        <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
-    </tbody>
-  </table>
+    </nav>
+    <%= link_to t("category.new"), new_admin_category_path,
+      class: "btn btn-primary btn-md" %>
+    <%= link_to t("layouts.header.add_word"), new_admin_word_path,
+      class: "btn btn-primary btn-md" %>
+    <table class="table table-bordered">
+      <tr>
+        <th><%= sort_link @q, :name, t("users.name") %></th>
+        <th><%= sort_link @q, :email, t("users.email") %></th>
+        <th><%= sort_link @q, :created_at, t("users.created_at") %></th>
+        <th><%= t "users.control" %></th>
+      </tr>
+      <tbody>
+        <%= render "shared/user_index", users: @users %>
+      </tbody>
+    </table>
+  </div>
 <% end %>

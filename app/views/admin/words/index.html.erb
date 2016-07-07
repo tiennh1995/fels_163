@@ -24,7 +24,7 @@
         <th><%= sort_link @q, :created_at, t(:created_at) %></th>
       </tr>
       <tbody>
-        <%= render "index" %>
+        <%= render "shared/word_index", words: @words %>
       </tbody>
     </table>
   </div>
