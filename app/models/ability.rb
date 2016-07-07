@@ -10,9 +10,8 @@ class Ability
         other_user.is_admin?
       end
     else
-      can :read, :Category
-      can :read, :Word
-      can :read, :Answer
+      can :read, :all
+      cannot :read, Log
     end
   end
 end
