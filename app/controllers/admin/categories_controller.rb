@@ -26,6 +26,7 @@ class Admin::CategoriesController < ApplicationController
   def create
     if @category.save
       flash[:success] = t "category.created_category"
+      Notification.new(@category).notify_new_category
       redirect_to admin_categories_path
     else
       render :new
