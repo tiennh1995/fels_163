@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
 
   resources :users
+  resources :memories, only: :index
   resources :categories, only: [:index, :show]
   resources :words, only: [:index, :show]
   namespace :admin do

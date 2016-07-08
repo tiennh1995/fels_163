@@ -99,6 +99,7 @@ en:
     index: "All Words"
     title: "Title"
     category: "Category"
+    memory: "All words memory"
   searches:
     title: "Search....."
     category: "Select category"

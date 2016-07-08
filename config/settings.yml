@@ -2,3 +2,7 @@ per_page: 9
 width_limit: 200
 height_limit: 200
 size_word: "100x100"
+fillter_types:
+  - "learned"
+  - "not_learn"
+  - "all"

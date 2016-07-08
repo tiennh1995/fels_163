@@ -7,6 +7,12 @@
           options_from_collection_for_select(@categories, "id", "name",
           @q.category_id_eq), {include_blank: t("searches.category")},
           {class: "form-control"} %>
+        <% Settings["fillter_types"].each do |type| %>
+        <ul class="input-group dn-front-word-filter">
+          <%= radio_button_tag :type, type, params[:type] == type %>
+          <%= label_tag type %>
+        </ul>
+      <% end %>
         <%= f.label :title_cont, t("word.title"), class: "sr-only" %>
         <%= f.text_field :title_cont,placeholder: t("searches.title"),
           class: "search_form form-control" %>
