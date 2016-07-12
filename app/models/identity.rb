@@ -7,7 +7,7 @@ class Identity < ActiveRecord::Base
     def find_for_oauth auth
       identity = find_or_create_by uid: auth.uid, provider: auth.provider
       identity.update_attributes accesstoken: auth.credentials.token,
-        refresh_token: auth.credentials.refresh_token, email: auth.info.name,
+        refresh_token: auth.credentials.refresh_token, email: auth.info.email,
         name: auth.info.name, image: auth.info.image
       identity
     end

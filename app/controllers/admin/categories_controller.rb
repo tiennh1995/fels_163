@@ -3,8 +3,7 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @q = @categories.ransack params[:q]
-    @categories = @q.result.paginate page: params[:page],
-      per_page: Settings.per_page
+    @categories = @q.result.page(params[:page]).per Settings.per_page
   end
 
   def show
@@ -13,8 +12,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path
     else
       @search = @category.words.ransack params[:q]
-      @words = @search.result.paginate page: params[:page],
-        per_page: Settings.per_page
+      @words = @search.result.page(params[:page]).per Settings.per_page
       @word = @category.words.build
       @word.answers.build
     end
@@ -31,6 +29,16 @@ class Admin::CategoriesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    Notification.new(@category).notify_delete_category
+    if @category.destroy
+      flash[:success] = t :delele_success
+    else
+      flash[:danger] = t :delete_fail
+    end
+    redirect_to :back
   end
 
   private

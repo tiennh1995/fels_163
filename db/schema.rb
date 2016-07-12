@@ -11,19 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706145516) do
+ActiveRecord::Schema.define(version: 20160711043252) do
 
   create_table "activities", force: :cascade do |t|
-    t.integer  "action_id"
-    t.integer  "activity_type"
-    t.boolean  "read",          default: false
-    t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "key"
+    t.text     "parameters"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "activities", ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at", unique: true
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
   create_table "answers", force: :cascade do |t|
     t.string   "title"
@@ -107,7 +112,7 @@ ActiveRecord::Schema.define(version: 20160706145516) do
     t.string   "name"
     t.text     "about"
     t.boolean  "is_admin",               default: false
-    t.string   "avatar"
+    t.string   "image"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "email",                  default: "",    null: false
