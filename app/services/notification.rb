@@ -14,4 +14,5 @@ class Notification
     @users.each do |user|
       @object.activities.create owner: user, key: "destroy_category"
     end
+  end
 end

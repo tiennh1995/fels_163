@@ -6,7 +6,7 @@ class WordsController < ApplicationController
     @words = (params[:type].nil? || params[:type] == "all") ? @words :
       @words.send("#{params[:type]}", current_user.id)
     @q = @words.ransack params[:q]
-    @words = @q.result.joins(:category).page(params[:page])
+    @words = @q.result.joins(:category).page(params[:page]).per Settings.per_page
   end
 
   def show
