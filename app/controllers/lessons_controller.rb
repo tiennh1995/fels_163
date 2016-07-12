@@ -7,8 +7,7 @@ class LessonsController < ApplicationController
     @categories = Category.all
     @lessons = current_user.lessons.order_lesson
     @q = @lessons.ransack params[:q]
-    @lessons = @q.result.joins(:category).paginate page: params[:page],
-      per_page: Settings.per_page
+    @lessons = @q.result.joins(:category).page(params[:page]).per Settings.per_page
   end
 
   def create

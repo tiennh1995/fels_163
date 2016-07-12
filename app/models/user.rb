@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length,
     allow_blank: true
 
+  mount_uploader :image, ImageUploader
+
   scope :not_admin, ->{where is_admin: false}
 
   %w(facebook twitter).each do |provider|
@@ -46,6 +48,18 @@ class User < ActiveRecord::Base
 
   def email_required?
     true
+  end
+
+  def follow other_user
+    active_relationships.create followed_id: other_user.id
+  end
+
+  def unfollow other_user
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following? other_user
+    following.include? other_user
   end
 
   private

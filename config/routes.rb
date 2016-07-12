@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
 
   resources :words, only: :index
+  resources :users, except: :destroy
+  resources :follows, only: [:create, :destroy]
   resources :lessons, only: :index
   resources :categories, only: [:index, :show] do
     resources :lessons, only: [:show, :create, :update]
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
         match "search" => "admin#users#index", via: [:get, :post], as: :search
       end
     end
-    resources :categories, except: [:destroy, :edit, :update]
+    resources :categories, except: [:edit, :update]
     resources :words
     resources :answers, only: :create
   end
