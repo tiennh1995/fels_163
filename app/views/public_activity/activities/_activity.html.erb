@@ -1,0 +1,15 @@
+<hr>
+<li>
+  <% if current_user? activity.owner %>
+    <%= t "activities.you" %>
+  <% else %>
+    <%= link_to truncate(activity.owner.name, length: Settings.length_title),
+      activity.owner %>
+  <% end %>
+  <%= activity_title activity %>
+  <%= link_to_object activity %>
+  <span class="small">
+    <%= t "times.posted" %> <%= time_ago_in_words activity.created_at %>
+    <%= t "times.ago" %>
+  </span>
+</li>
