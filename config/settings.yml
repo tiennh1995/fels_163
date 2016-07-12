@@ -13,3 +13,6 @@ image_user: "90x90"
 length_title: 23
 activity:
   window: 2
+relation:
+  followers: "followers"
+  following: "following"

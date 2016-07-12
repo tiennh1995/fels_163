@@ -153,7 +153,6 @@ aside {
 /* forms */
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
 }
 
 table {
@@ -183,4 +182,22 @@ table {
 }
 .result_table {
   margin-left: -45px;
+}
+
+label.answer_field {
+  font-weight: normal;
+}
+
+#time_lesson {
+  color: #ff0000;
+}
+
+#lesson_search {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.search_lesson {
+  background-color: #e9ebee;
+  text-align: center;
 }

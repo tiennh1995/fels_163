@@ -21,6 +21,16 @@ class Admin::CategoriesController < ApplicationController
   def new
   end
 
+  def destroy
+    if @category.destroy
+      flash[:success] = t :success
+      redirect_to categories_path
+    else
+      flash[:danger] = t :danger
+      redirect_to @category
+    end
+  end
+
   def create
     if @category.save
       flash[:success] = t "category.created_category"
