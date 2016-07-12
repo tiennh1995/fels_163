@@ -1,0 +1,14 @@
+<p>
+  <b><%= t :remaining_times %></b> :
+  <span id="time_lesson"><%= @time_lesson %></span>
+  <%= t :seconds %>
+</p>
+<%= form_for [@lesson.category, @lesson] do |f| %>
+  <%= f.fields_for :results do |result| %>
+    <%= render "result_fields", f: result %>
+  <% end %>
+  <%= f.hidden_field :status, value: "done" %>
+  <% if can? :update, @lesson %>
+    <%= f.submit t(:finish), method: :update, class: "btn btn-primary" %>
+  <% end %>
+<% end %>
