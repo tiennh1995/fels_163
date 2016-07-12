@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  validates_presence_of :email, if: :email_required?
+  validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
+  validates_format_of :email, with: Devise.email_regexp, allow_blank: true,
+    if: :email_changed?
+  validates_presence_of :password, if: :password_required?
+  validates_confirmation_of :password, if: :password_required?
+  validates_length_of :password, within: Devise.password_length,
+    allow_blank: true
+
   scope :not_admin, ->{where is_admin: false}
 
   %w(facebook twitter).each do |provider|
@@ -24,6 +33,25 @@ class User < ActiveRecord::Base
 
     define_method "#{provider}_client" do |provider|
       binding.eval("@#{provider}_client ||= #{provider.capitalize}.client(access_token: #{provider}.accesstoken)")
+    end
+  end
+
+  include PublicActivity::Model
+  tracked
+
+  def password_required?
+    return false if email.blank?
+    !persisted? || !password.nil? || !password_cofirmation.nil?
+  end
+
+  def email_required?
+    true
+  end
+
+  private
+  def destroy_user_activities
+    PublicActivity::Activity.user(self).each do |activity|
+      activity.destroy!
     end
   end
 end

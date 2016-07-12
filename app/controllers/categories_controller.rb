@@ -3,8 +3,7 @@ class CategoriesController < ApplicationController
 
   def index
     @q = @categories.ransack params[:q]
-    @categories = @q.result.paginate page: params[:page],
-      per_page: Settings.per_page
+    @categories = @q.result.page(params[:page]).per Settings.per_page
   end
 
   def show
@@ -13,8 +12,7 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     else
       @search = @category.words.ransack params[:q]
-      @words = @search.result.paginate page: params[:page],
-        per_page: Settings.per_page
+      @words = @search.result.page(params[:page]).per Settings.per_page
     end
   end
 end

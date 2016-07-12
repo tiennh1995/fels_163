@@ -6,7 +6,12 @@ class Notification
 
   def notify_new_category
     @users.each do |user|
-      user.activities.create action_id: @object.id, activity_type: :new_category
+      @object.activities.create key: "new_category", owner: user
     end
   end
+
+  def notify_delete_category
+    @users.each do |user|
+      @object.activities.create owner: user, key: "destroy_category"
+    end
 end

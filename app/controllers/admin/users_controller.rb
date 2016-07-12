@@ -4,8 +4,7 @@ class Admin::UsersController < ApplicationController
   def index
     @users = @users.not_admin
     @q = @users.ransack params[:q]
-    @users = @q.result.paginate page:
-      params[:page], per_page: Settings.per_page
+    @users = @q.result.page(params[:page]).per Settings.per_page
   end
 
   def destroy
