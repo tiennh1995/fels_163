@@ -1,0 +1,18 @@
+<hr>
+<table class="table result_table">
+  <thead>
+    <th><%= t :words %></th>
+    <th><%= t :your_answer %></th>
+    <th><%= t :true_answer %></th>
+  </thead>
+  <tbody>
+    <% @lesson.results.each do |result| %>
+      <tr class=<%= answer_class result.answer %>>
+        <td><%= result.word.title %></td>
+        <td><%= result.answer.present? ? result.answer.title : "" %></td>
+        <td><%= get_answer_correct(result.word).title %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

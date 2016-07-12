@@ -34,14 +34,13 @@ class Admin::WordsController < ApplicationController
   end
 
   def update
-    if @word.update_attributes word_params
-      flash[:success] = t :success
+    if check_word_params? && @word.update_attributes(word_params)
       respond_to do |format|
         format.html {redirect_to [:admin, @word]}
         format.js
       end
     else
-      flash[:danger] = t :danger
+      load_category
       render :edit
     end
   end
@@ -65,6 +64,15 @@ class Admin::WordsController < ApplicationController
     unless @word.answers.nil?
       @word.answers.each do |answer|
         return true if answer.is_correct?
+      end
+    end
+    false
+  end
+
+  def check_word_params?
+    unless params[:word][:answers_attributes].nil?
+      params[:word][:answers_attributes].values.each do |p|
+        return true if p["is_correct"] == "1"
       end
     end
     false

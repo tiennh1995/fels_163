@@ -66,6 +66,7 @@ en:
       category: "Categories"
       add_word: "Add word"
       log: "System log"
+      lessons: "All lessons"
   sessions:
     new:
       title: "Log in"
@@ -93,6 +94,7 @@ en:
     new: "New category"
     newname: "Enter category name"
     created_category: "New category added"
+    category: "Category"
   created_at: "Created at"
   control: "Control"
   word:
@@ -121,3 +123,17 @@ en:
   last_sign_in: "Sign in time: %{time}"
   current_ip: "Current IP: %{nowip}"
   social_signin: "Sign in with: %{provide}"
+  create_lesson: "Create lesson"
+  lesson:
+    index: "All lesson"
+    title: "Lesson"
+  words: "words"
+  remaining_times: "Remaining time : "
+  seconds: "seconds"
+  finish: "Finish"
+  yout_answer: "Your answer"
+  true_answer: "True answer"
+  status: "Status"
+  show: "Show"
+  resume: "Resume"
+  start: "Start"
