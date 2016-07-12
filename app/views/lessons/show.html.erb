@@ -1,0 +1,33 @@
+<% if can? :read, @lesson %>
+  <div class="dn-front-group">
+    <h1><%= t("lesson.title") %> <%= @lesson.id %></h1>
+    <div class="row">
+      <aside class="col-md-4">
+        <div>
+          <strong class="text-capitalize dn-text-lesson">
+            <%= current_user.name %></strong>
+        </div>
+      </aside>
+      <div class = "col-md-6">
+        <p>
+          <b><%= t "category.category" %></b> :
+          <%= @lesson.category.name %>
+        </p>
+        <b><%= t :done %></b> :
+        <b id="number_of_done" value="0"><%= @count %></b> /
+        <b><%= @lesson.results.size %></b>
+
+        <div id="lesson_<%= @lesson.id %>">
+          <% if @lesson.done? %>
+            <%= render "show_result" %>
+          <% elsif @lesson.doing? %>
+            <%= render "do_test" %>
+          <% else %>
+            <%= render "start_lesson" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= hidden_field_tag "refreshed", "no" %>
+<% end %>

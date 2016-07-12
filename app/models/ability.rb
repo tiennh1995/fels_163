@@ -11,6 +11,7 @@ class Ability
       end
     else
       can :read, :all
+      can [:create, :update], Lesson, user_id: user.id
       cannot :read, Log
     end
   end

@@ -19,6 +19,12 @@
           <tr>
             <td><%= link_to category.name, category %></td>
             <td><%= l category.created_at, format: :default %></td>
+            <td>
+              <%= form_for [category, category.lessons.build] do |f| %>
+                <%= f.hidden_field :category_id, value: category.id %>
+                <%= f.submit t(:create_lesson), class: "btn btn-primary" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

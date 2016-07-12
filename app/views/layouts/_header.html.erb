@@ -6,12 +6,12 @@
         <% if user_signed_in? %>
           <% if current_user.is_admin? %>
             <li><%= link_to t("layouts.header.home"), admin_root_path %></li>
-            <li><%= link_to t("layouts.header.categories"),
+            <li><%= link_to t("layouts.header.category"),
               admin_categories_path %></li>
             <li><%= link_to t("layouts.header.words"), admin_words_path %></li>
           <% else %>
             <li><%= link_to t("layouts.header.home"), root_path %></li>
-            <li><%= link_to t("layouts.header.categories"),
+            <li><%= link_to t("layouts.header.category"),
               categories_path %></li>
             <li><%= link_to t("layouts.header.words"), words_path %></li>
           <% end %>
@@ -26,8 +26,9 @@
                   <%= link_to t("layouts.header.users"), admin_users_path %>
                 </li>
               <% else %>
-                <li><%= link_to t("layouts.header.memory"),
-                  memories_path %></li>
+                <li>
+                  <%= link_to t("layoutsgeader.lessons"), lessons_path %>
+                </li>
               <% end %>
               <li><%= link_to t("layouts.header.logout"),
                 destroy_user_session_path, method: :delete %></li>

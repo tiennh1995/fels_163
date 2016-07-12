@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def answer_class answer
-    answer.is_correct? ? "correct_answer" : "well"
-  end
-
   def link_to_remove_fields name, f
     f.hidden_field(:_destroy) + link_to(name, "remove_fields(this)")
   end
@@ -15,5 +11,17 @@ module ApplicationHelper
     end
     link_to name, "#", class: "add_fields",
       data: {id: id, fields: fields.gsub("\n", "")}
+  end
+
+  def answer_class answer
+    answer.try(:is_correct?) ? "correct_answer" : "well"
+  end
+
+  def get_answer_correct word
+    word.answers.each {|e| return e if e.is_correct?}
+  end
+
+  def update_status lesson
+    "doing" if lesson.ready?
   end
 end

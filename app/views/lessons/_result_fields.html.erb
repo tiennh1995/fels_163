@@ -1,0 +1,13 @@
+<hr>
+<li class="dn-margin-question">
+  <h5 class="well"><%= f.object.word.title %></h5>
+  <ul>
+    <% f.object.word.answers.each do |answer| %>
+      <li class="well col-md-4 answer" id="<%= f.object.word.id %>"
+        onchange="set_number(this.id)">
+        <%= answer.title %>
+        <%= f.radio_button :answer_id, answer.id, class: "radio" %>
+      </li>
+    <% end %>
+  </ul>
+</li>
