@@ -67,6 +67,7 @@ en:
       add_word: "Add word"
       log: "System log"
       lessons: "All lessons"
+      activity: "Activities"
   sessions:
     new:
       title: "Log in"
@@ -104,7 +105,7 @@ en:
     memory: "All words memory"
   searches:
     title: "Search....."
-    category: "Select category"
+    category: "All category"
   words:
     new: "New Word"
   create: "Create"
@@ -137,3 +138,14 @@ en:
   show: "Show"
   resume: "Resume"
   start: "Start"
+  activities:
+    title: "All notification"
+    follow: " followed "
+    unfollow: "unfollowed"
+    destroy_category: "a category has been deleted."
+    new_category: "have new category: "
+    new_lesson: " created new lesson "
+    you: "You "
+    nothing: "You don't have any notification"
+  delete_success: "Delete successfully!"
+  delete_fail: "Cound not delete, please try later"

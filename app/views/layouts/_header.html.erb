@@ -28,6 +28,8 @@
               <% else %>
                 <li>
                   <%= link_to t("layoutsgeader.lessons"), lessons_path %>
+                <li><%= link_to t("layouts.header.activity"),
+                  user_activities_path(current_user) %>
                 </li>
               <% end %>
               <li><%= link_to t("layouts.header.logout"),
@@ -35,8 +37,8 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t("layouts.header.login"), new_user_session_path
-            %></li>
+          <li><%= link_to t("layouts.header.login"), new_user_session_path %>
+          </li>
         <% end %>
       </ul>
     </nav>

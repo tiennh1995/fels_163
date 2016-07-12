@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, class_name: "FormUser", controllers: {
+  devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "sessions",
     omniauth_callbacks: "omniauth_callbacks"
@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
 
-  resources :users, except: :destroy
+  resources :words, only: :index
   resources :lessons, only: :index
   resources :categories, only: [:index, :show] do
     resources :lessons, only: [:show, :create, :update]
   end
-  resources :words, only: [:index, :show]
+  resources :users, except: [:destroy] do
+    resources :activities, only: :index
+  end
   namespace :admin do
     root "users#index"
     resources :logs, only: :index

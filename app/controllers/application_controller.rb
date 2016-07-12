@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   include CanCan::ControllerAdditions
+  include PublicActivity::StoreController
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = t "not_authorized"

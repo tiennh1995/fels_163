@@ -8,9 +8,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @identity.email = "#{nickname}@fels.xxx"
       end
       @user ||= User.find_by email: @identity.email
-      @user ||= User.create name: identity.name, email: identity.email,
-        password: identity.uid, password_confirmation: identity.uid,
-        image: identity.image
+      @user ||= User.create name: @identity.name, email: @identity.email,
+        password: @identity.uid, password_confirmation: @identity.uid,
+        image: @identity.image
       if @user.persisted?
         @identity.update_attributes user_id: @user.id
         sign_in_and_redirect @user, event: :authentication

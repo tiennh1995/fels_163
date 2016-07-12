@@ -3,6 +3,10 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to(name, "remove_fields(this)")
   end
 
+  def current_user? user
+    user == current_user
+  end
+
   def link_to_add_fields name, f, association
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -23,5 +27,18 @@ module ApplicationHelper
 
   def update_status lesson
     "doing" if lesson.ready?
+  end
+
+  def link_to_object activity
+    object = binding.eval("#{activity.trackable_type}.find_by_id activity.trackable_id")
+    if object.nil?
+      link_to t("error._error"), help_path
+    else
+      link_to truncate(object.name, length: Settings.length_title), object
+    end
+  end
+
+  def activity_title activity
+    t "activities.#{activity.key}"
   end
 end
