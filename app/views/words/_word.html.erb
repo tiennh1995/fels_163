@@ -1,5 +1,5 @@
 <% if word.id? %>
-  <%= link_to word.title, word %>
+  <%= word.title %>
   <%= image_tag word.image.url, size: Settings.size_word unless
     word.image.url.nil? %>
   <hr>

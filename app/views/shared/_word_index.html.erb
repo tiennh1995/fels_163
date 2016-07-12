@@ -1,7 +1,8 @@
 <% words.each do |word| %>
   <tr>
     <td>
-      <%= link_to word.title, current_user.is_admin? ? [:admin, word] : word %>
+      <%= current_user.is_admin? ?
+        link_to(word.title, [:admin, word]) : word.title %>
     </td>
     <td>
       <%= link_to word.category.name, current_user.is_admin? ?
@@ -10,3 +11,4 @@
     <td><%= l word.created_at, format: :default %></td>
   </tr>
 <% end %>
+<%= will_paginate %>

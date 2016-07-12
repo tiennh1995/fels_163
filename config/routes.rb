@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
 
-  resources :users
-  resources :memories, only: :index
-  resources :categories, only: [:index, :show]
+  resources :users, except: :destroy
+  resources :lessons, only: :index
+  resources :categories, only: [:index, :show] do
+    resources :lessons, only: [:show, :create, :update]
+  end
   resources :words, only: [:index, :show]
   namespace :admin do
     root "users#index"

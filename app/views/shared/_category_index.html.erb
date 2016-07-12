@@ -1,8 +1,12 @@
 <% categories.each do |category| %>
   <tr>
-    <td><%= link_to category.name, [:admin, category] %></td>
+    <td><%= link_to category.name, current_user.is_admin? ?
+      [:admin, category] : category %></td>
     <td><%= l category.created_at, format: :default %></td>
-    <td><%= link_to t(:delete), "#",
-      method: :delete, data: {confirm: t(:confirm)} %></td>
+    <% if can? :destroy, category %>
+      <td><%= link_to t(:delete), "#",
+        method: :delete, data: {confirm: t(:confirm)} %></td>
+    <% end %>
   </tr>
 <% end %>
+<%= will_paginate %>
