@@ -25,7 +25,7 @@ en:
       default: "%d/%m/%Y"
       short: "%m - %Y"
       day_month: "%d/%m"
-      long: "%H:%M, %d/%m,%Y"
+      long: "%H:%M:%S, %d/%m/%Y"
 
   date:
     <<: *datetime
@@ -130,6 +130,7 @@ en:
     title: "Lesson"
   words: "words"
   remaining_times: "Remaining time : "
+  minutes: "minutes"
   seconds: "seconds"
   finish: "Finish"
   yout_answer: "Your answer"
@@ -149,3 +150,12 @@ en:
     nothing: "You don't have any notification"
   delete_success: "Delete successfully!"
   delete_fail: "Cound not delete, please try later"
+  edit: "Edit"
+  current_waiting: "Currently waiting confirmation for:"
+  number_of_words: "Number of words"
+  following: "following"
+  followers: "followers"
+  follow: "Follow"
+  unfollow: "Unfollow"
+  activities:
+    title: "Activity"

@@ -26,12 +26,19 @@
                   <%= link_to t("layouts.header.users"), admin_users_path %>
                 </li>
               <% else %>
-                <li>
-                  <%= link_to t("layoutsgeader.lessons"), lessons_path %>
                 <li><%= link_to t("layouts.header.activity"),
                   user_activities_path(current_user) %>
                 </li>
+                <li><%= link_to t("layouts.header.lessons"),
+                  lessons_path %></li>
+                <li><%= link_to t("layouts.header.users"), users_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to t("layouts.header.profile"),
+                  user_path(current_user) %></li>
+                <li><%= link_to t("layouts.header.setting"),
+                  edit_user_registration_path(current_user) %></li>
               <% end %>
+              <li class="divider"></li>
               <li><%= link_to t("layouts.header.logout"),
                 destroy_user_session_path, method: :delete %></li>
             </ul>
