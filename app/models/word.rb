@@ -7,7 +7,7 @@ class Word < ActiveRecord::Base
   validates_presence_of :title
   validates_uniqueness_of :title
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :picture, PictureUploader
 
   scope :learned, ->(user_id) do
     Word.eager_load(:results).where "lesson_id IN

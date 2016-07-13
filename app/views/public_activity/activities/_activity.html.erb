@@ -1,6 +1,6 @@
 <hr>
 <li>
-  <% if current_user? activity.owner %>
+  <% if current_user == activity.owner %>
     <%= t "activities.you" %>
   <% else %>
     <%= link_to truncate(activity.owner.name, length: Settings.length_title),

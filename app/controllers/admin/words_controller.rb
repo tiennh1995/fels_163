@@ -1,4 +1,4 @@
-class Admin::WordsController < ApplicationController
+class Admin::WordsController < Admin::AdminController
   load_and_authorize_resource
   before_action :load_category, only: [:new, :edit]
 

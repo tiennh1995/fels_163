@@ -23,6 +23,11 @@ gem "sidekiq"
 gem "public_activity"
 gem "whenever"
 gem "sdoc", "~> 0.4.0", group: :doc
+gem "font-awesome-sass"
+
+source "https://rails-assets.org/" do
+  gem "rails-assets-adminlte"
+end
 
 group :development, :test do
   gem "sqlite3", "1.3.9"
