@@ -21,6 +21,7 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "sidekiq"
 gem "public_activity"
+gem "whenever"
 gem "sdoc", "~> 0.4.0", group: :doc
 
 group :development, :test do

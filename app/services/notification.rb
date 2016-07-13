@@ -15,4 +15,8 @@ class Notification
       @object.activities.create owner: user, key: "destroy_category"
     end
   end
+
+  def send_statistic_mail
+    @users.each {|user| UserMailer.statistic_email(user).deliver}
+  end
 end

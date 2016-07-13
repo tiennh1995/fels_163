@@ -16,3 +16,5 @@ activity:
 relation:
   followers: "followers"
   following: "following"
+time_life: 8
+default_email: "from@example.com"

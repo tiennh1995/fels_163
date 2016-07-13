@@ -12,7 +12,9 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "mysite"
+  config.active_job.queue_name_delimiter = "_"
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -30,7 +32,10 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = "localhost:3000" # Don't use this literally; use your local dev host instead
+  config.action_mailer.default_url_options = {host: host, protocol: "https"}
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.

@@ -158,4 +158,20 @@ en:
   follow: "Follow"
   unfollow: "Unfollow"
   activities:
-    title: "Activity"
+    title: "All notification"
+    follow: " follow "
+    new_category: "New category added: "
+    new_lesson: "You created new lesson "
+    name_lesson: "%{category} lesson"
+  user_mailer:
+    statistic_email:
+      subject: "Statistic exam email"
+      head: "Hi %{name},"
+      body: "This is email notification of your learning statistics for the past month at FELS"
+      end: "You learned %{lesson} lesson in %{category} categories."
+      more: "Total words to be remembered: %{word}."
+    send_result:
+      subject: "Result Examination by FELS"
+    send_destroy_lesson:
+      subject: "Delete lesson by FELS"
+  site_title: "FELS_163"
