@@ -1,0 +1,10 @@
+<% words.each do |word| %>
+  <tr>
+    <td>
+      <%= link_to word.title, [:admin, word] %>
+    </td>
+    <td><%= l word.created_at, format: :default %></td>
+    <td><%= l word.updated_at, format: :default %></td>
+  </tr>
+<% end %>
+<%= paginate words %>

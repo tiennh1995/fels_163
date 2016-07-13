@@ -1,24 +1,21 @@
 <% if can? :manage, @users %>
-  <div class="container">
+  <div class="container col-md-10 col-md-offset-1">
     <h1><%= t "users.all" %></h1>
-    <nav class="navbar navbar-default search">
+    <nav class="navbar navbar-default admin-search">
       <%= search_form_for [:admin, @q],
         {class: "navbar-form", role: "form"} do |f| %>
         <%= f.label :name_cont, t("users.name") %>
         <%= f.text_field :name_cont,placeholder: t("searches.title"),
           class: "search_form form-control" %>
-        <br>
-        <br>
-        <%= f.label :email_cont,  t("users.email") %>
-        <%= f.text_field :email_cont,placeholder: t("searches.title"),
-          class: "search_form form-control" %>
         <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
     </nav>
-    <%= link_to t("category.new"), new_admin_category_path,
-      class: "btn btn-primary btn-md" %>
-    <%= link_to t("layouts.header.add_word"), new_admin_word_path,
-      class: "btn btn-primary btn-md" %>
+    <div class="admin-action-category">
+      <%= link_to t("category.new"), new_admin_category_path,
+        class: "btn btn-primary btn-md" %>
+      <%= link_to t("layouts.header.add_word"), new_admin_word_path,
+        class: "btn btn-primary btn-md" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <th><%= sort_link @q, :name, t("users.name") %></th>

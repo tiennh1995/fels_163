@@ -1,13 +1,19 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel panel-default text-center">
-      <h3><%= @category.name %></h3><hr>
-      <div class="panel-body">
-        <%= render @category.words %>
-      </div>
-    </div>
+<div class="container col-md-10 col-md-offset-1">
+  <h1><%= @category.name %></h1>
+  <div class="admin-action-category">
+    <%= link_to t("words.new"), new_admin_word_path(category_id: @category.id),
+      class: "btn btn-primary btn-md" %>
+    <%= link_to t(:delete), [:admin, @category], method: :delete,
+      data: {confirm: t(:confirm)}, class: "btn btn-primary btn-md" %>
   </div>
+  <table class="table table-bordered">
+    <thead>
+      <th><%= sort_link @q, :title, t("word.title") %></th>
+      <th><%= sort_link @q, :created_at, t(:created_at) %></th>
+      <th><%= sort_link @q, :updated_at, t(:updated_at) %></th>
+    </thead>
+    <tr>
+      <%= render "word_category_index", words: @words %>
+    </tr>
+  </table>
 </div>
-<%= link_to t("words.new"), new_admin_word_path(category_id: @category.id) %>
-<%= link_to t(:delete), [:admin, @category],
-  method: :delete, data: {confirm: t(:confirm)} %>

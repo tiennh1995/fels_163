@@ -5,9 +5,10 @@
       class: "btn btn-lg btn-primary" %>
   </div>
 <% else %>
-  <p>
-    <%= current_user.name %>
-    <%= current_user.current_sign_in_at %>
-    <%= current_user.current_sign_in_ip %>
-  </p>
+  <div class="col-md-4">
+    <h1><%= t("activities.title") %></h1>
+    <%= render @activities %>
+    <%= link_to t("activities.all"), user_activities_path(current_user),
+      class: "btn btn-primary form-control" %>
+  </div>
 <% end %>
