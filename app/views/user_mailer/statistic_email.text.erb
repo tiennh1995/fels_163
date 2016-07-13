@@ -1,0 +1,6 @@
+<%= t :site_title %>
+<%= t"user_mailer.statistics_email.title", name: @content[:name] %>
+<%= t "user_mailer.statistics_email.body" %>
+<%= t"user_mailer.statistics_email.end", lesson: @content[:lesson],
+  category: @content[:categories] %>
+<%= t "user_mailer.statistics_email.more", word: @content[:words] %>

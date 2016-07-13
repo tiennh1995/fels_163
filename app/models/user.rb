@@ -58,8 +58,20 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def words_in_month
+    Result.word_in_month self.id
+  end
+
   def following? other_user
     following.include? other_user
+  end
+
+  def lesson_in_month
+    Lesson.in_month(self.id).size
+  end
+
+  def category_in_month
+    Lesson.in_month(self.id).distinct.count :category_id
   end
 
   private

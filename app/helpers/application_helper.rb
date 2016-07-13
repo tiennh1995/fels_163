@@ -34,6 +34,7 @@ module ApplicationHelper
     if object.nil?
       link_to t("error._error"), help_path
     else
+      object = object.category if object.class == Lesson
       link_to truncate(object.name, length: Settings.length_title), object
     end
   end

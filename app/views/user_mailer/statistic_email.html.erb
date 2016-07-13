@@ -1,0 +1,6 @@
+<h1><%= t :site_title %></h1>
+<p><%= t"user_mailer.statistics_email.title", name: @content[:name] %></p>
+<p><%= t "user_mailer.statistics_email.body" %></p>
+<p><%= t"user_mailer.statistics_email.end", lesson: @content[:lesson],
+  category: @content[:categories] %></p>
+<p><b><%= t "user_mailer.statistics_email.more", word: @content[:words] %></b></p>

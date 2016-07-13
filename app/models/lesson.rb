@@ -13,21 +13,31 @@ class Lesson < ActiveRecord::Base
   accepts_nested_attributes_for :results
 
   scope :order_lesson, ->{order created_at: :desc}
+  scope :in_month, ->(user_id) do
+    where "user_id = ? AND created_at >= ?", user_id, 1.month.ago
+  end
 
   def submit
     update_attributes status: 2
   end
 
-  private
-  def load_words
-    self.words = category.words.order("RANDOM()").limit Settings.number_word
+  include PublicActivity::Model
+  tracked only: :create, owner: Proc.new{|controller, model| controller.current_user}
+
+  def sum_correct
+    Result.sum_correct self.id
   end
 
-  include PublicActivity::Model
-  tracked owner: Proc.new{|controller, model| controller.current_user}
+  def total
+    results.size
+  end
 
   private
   def create_activity_lesson
     create_activity key: "new_lesson"
+  end
+
+  def load_words
+    self.words = category.words.order("RANDOM()").limit Settings.number_word
   end
 end
