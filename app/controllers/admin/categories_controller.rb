@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminController
   load_and_authorize_resource
 
   def index
@@ -11,8 +11,8 @@ class Admin::CategoriesController < ApplicationController
       flash[:danger] = t :category_fails
       redirect_to admin_categories_path
     else
-      @search = @category.words.ransack params[:q]
-      @words = @search.result.page(params[:page]).per Settings.per_page
+      @q = @category.words.ransack params[:q]
+      @words = @q.result.page(params[:page]).per Settings.per_page
       @word = @category.words.build
       @word.answers.build
     end

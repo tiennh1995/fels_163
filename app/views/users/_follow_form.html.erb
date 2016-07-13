@@ -1,5 +1,6 @@
-<% unless current_user? @user %>
+<% if can? :create, @active %>
   <div id="follow_form">
     <%= render current_user.following?(@user) ? "unfollow" : "follow" %>
   </div>
 <% end %>
+
