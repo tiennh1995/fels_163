@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
     @lesson.user = current_user
     if @lesson.save
       redirect_to [@category, @lesson]
+      LessonWorker.perform_in Settings.time_life, @lesson.id
     else
       flash[:danger] = t :danger
       redirect_to categories_path
@@ -25,7 +26,11 @@ class LessonsController < ApplicationController
 
   def update
     if @lesson.update_attributes lesson_params
-      @lesson.delay_for(Settings.time_lesson.seconds).submit if @lesson.doing?
+      if @lesson.doing?
+        @lesson.delay_for(Settings.time_lesson.seconds).submit
+      elsif @lesson.done?
+        UserMailer.delay.send_result @lesson
+      end
       redirect_to [@category, @lesson]
     else
       flash[:danger] = t :danger
