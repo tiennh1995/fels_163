@@ -78,8 +78,7 @@ class Admin::WordsController < ApplicationController
   end
 
   def load_category
-    @categories = Category.paginate page:
-      params[:page], per_page: Settings.per_page
+    @categories = Category.page(params[:page]).per Settings.per_page
     @category = @categories.find_by_id params[:category_id]
   end
 end

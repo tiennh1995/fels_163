@@ -172,6 +172,13 @@ en:
       more: "Total words to be remembered: %{word}."
     send_result:
       subject: "Result Examination by FELS"
+      head: "Hi %{name},"
+      body: "This is email notification for your result of examination at FELS"
+      id: "Exam name: Lesson %{id}"
+      total_word: "Total words to be remembered: %{correct}"
+      end: "You correct %{correct} answers in %{total} question."
     send_destroy_lesson:
       subject: "Delete lesson by FELS"
+      head: "Hi %{name},"
+      body: "We are pleased to announce that the lessons Lesson %{id} you have created at 8h ago has been removed because you did not start it."
   site_title: "FELS_163"
