@@ -1,9 +1,12 @@
 <% lessons.each do |lesson| %>
   <tr>
     <td><%= lesson.id %></td>
+    <td><%= l lesson.created_at, format: :long %></td>
     <td><%= link_to lesson.category.name, lesson.category %></td>
-    <td><%= lesson.created_at %></td>
     <td><%= lesson.status %></td>
+    <td><%= Settings.limit_minutes %></td>
+    <td><%= Settings.number_word %></td>
+
     <td>
       <%= link_to t(:show), [lesson.category, lesson] %>
     </td>

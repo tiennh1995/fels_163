@@ -12,6 +12,8 @@ class Ability
     else
       can :read, :all
       can [:create, :update], Lesson, user_id: user.id
+      can :create, Follow, followed_id: user.id
+      can :destroy, Follow, follower_id: user.id
       cannot :read, Log
     end
   end

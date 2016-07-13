@@ -9,3 +9,5 @@
   </div>
 </div>
 <%= link_to t("words.new"), new_admin_word_path(category_id: @category.id) %>
+<%= link_to t(:delete), [:admin, @category],
+  method: :delete, data: {confirm: t(:confirm)} %>
