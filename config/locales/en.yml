@@ -199,3 +199,6 @@ en:
     confirmation: "Password confirmation"
     or: "Or"
     with: "Sign up with %{provider}"
+  must_check: "You have to check the correct answer!"
+  check_sure: "PLease check true answer"
+  edit_word: "Edit word"
