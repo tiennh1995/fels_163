@@ -74,6 +74,10 @@ en:
       remember: "Remember me on this computer"
       newuser: "New user"
       danger: "Invalid email/password combinaion"
+      email_field: "Email address"
+      password_field: "Password"
+      social: "Or Login via"
+      new_here: "New here? "
   login_danger: "Please log in"
   destroy:
     success: "Destroy success!"
@@ -183,9 +187,15 @@ en:
       head: "Hi %{name},"
       body: "We are pleased to announce that the lessons Lesson %{id} you have created at 8h ago has been removed because you did not start it."
   site_title: "FELS_163"
-
   history: "History signup, signin"
   index: "Index"
   create: "Create"
   admin:
     footer: "Project 2 - E-learning"
+  facebook: "Facebook"
+  twitter: "Twitter"
+  signup:
+    password: "Password"
+    confirmation: "Password confirmation"
+    or: "Or"
+    with: "Sign up with %{provider}"

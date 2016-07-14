@@ -6,7 +6,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 body {
   padding-top: 60px;
-  background-color: #e9ebee;
+  background: #eee !important;
 }
 
 .home {
@@ -29,6 +29,74 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+/* login page */
+
+#user_remember_me {
+  margin-left: 0;
+}
+
+#loginbox {
+  margin-top:50px;
+}
+.panel-body {
+  padding-top:30px;
+}
+.input-group {
+  margin-bottom: 25px;
+}
+
+.social-buttons{
+  margin: 20px 0;
+}
+.social-buttons a{
+  width: 30%;
+  margin: 0 10px;
+}
+.btn-facebook{
+  color: #fff;
+  background-color:#3b5998;
+}
+.btn-facebook:hover{
+  color: #fff;
+  background-color:#496ebc;
+}
+.btn-twitter{
+  color: #fff;
+  background-color:#55acee;
+}
+.btn-twitter:hover{
+  color: #fff;
+  background-color:#59b5fa;
+}
+
+/* signup */
+#signupbox {
+  margin-top: 50px;
+}
+
+#signin-button {
+  float:right;
+  font-size: 120%;
+  position: relative;
+  top:-20px;
+}
+#social-signup {
+  border-top: 1px solid #999;
+  padding-top:20px;
+}
+
+.signup {
+  margin: 10px 0;
+}
+#pw-field {
+  margin-top: 30px;
+}
+
+.signup-sbtn {
+  margin: 0 10px;
+  width: 35%;
 }
 
 /* typography */
@@ -74,7 +142,7 @@ p {
 }
 
 .header {
-  background-color: #0099ff;
+  background-color: #000000;
 }
 
 /* footer */
