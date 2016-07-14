@@ -9,10 +9,13 @@ class Admin::UsersController < Admin::AdminController
 
   def destroy
     if @user.destroy
-      flash.now[:success] = t "destroy.success"
+      flash[:success] = t "destroy.success"
     else
-      flash.now[:danger] = t "destroy.danger"
+      flash[:danger] = t "destroy.danger"
     end
     redirect_to admin_users_url
+  end
+
+  def show
   end
 end

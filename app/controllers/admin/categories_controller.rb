@@ -21,22 +21,13 @@ class Admin::CategoriesController < Admin::AdminController
   def new
   end
 
-  def destroy
-    if @category.destroy
-      flash[:success] = t :success
-      redirect_to categories_path
-    else
-      flash[:danger] = t :danger
-      redirect_to @category
-    end
-  end
-
   def create
     if @category.save
       flash[:success] = t "category.created_category"
       Notification.new(@category).notify_new_category
       redirect_to admin_categories_path
     else
+      flash[:danger] = t :danger
       render :new
     end
   end

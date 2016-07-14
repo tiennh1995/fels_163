@@ -1,7 +1,7 @@
 <div class="container col-md-10 col-md-offset-1">
   <h1><%= @category.name %></h1>
   <div class="admin-action-category">
-    <%= link_to t("words.new"), new_admin_word_path(category_id: @category.id),
+    <%= link_to t("word_new"), new_admin_word_path(category_id: @category.id),
       class: "btn btn-primary btn-md" %>
     <%= link_to t(:delete), [:admin, @category], method: :delete,
       data: {confirm: t(:confirm)}, class: "btn btn-primary btn-md" %>

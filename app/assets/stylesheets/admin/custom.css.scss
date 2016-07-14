@@ -4,7 +4,11 @@
 @import "font-awesome";
 
 .dn-content{
-  min-height: 590px!important
+  min-height: 590px!important;
+}
+
+.content{
+  overflow: auto;
 }
 
 .admin-search {
@@ -66,4 +70,63 @@ input, textarea, select, .uneditable-input {
 
 .create {
   margin-top: 10px;
+}
+
+.category_label {
+  margin-right: 10px;
+}
+
+.correct_answer {
+  @extend .well;
+  background-color: #37b2db;
+}
+
+.word_title {
+  display: inline-block;
+  width: 100%;
+}
+
+.image_word {
+  display: inline-block!important;
+  width: 100%;
+}
+
+.collect_new_word {
+  display: inline-block;
+  width: 100%;
+}
+
+.word_new {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.category {
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.image {
+  margin-bottom: 10px;
+}
+
+.button_answer {
+}
+
+.word_answer {
+  margin-left: -15px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
+
+.add_field {
+  margin-bottom: 10px;
+}
+
+.word_show {
+  background-color: #fff;
+  padding: 30px;
 }
