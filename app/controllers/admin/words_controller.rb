@@ -17,7 +17,7 @@ class Admin::WordsController < Admin::AdminController
   end
 
   def create
-    if @word.save
+    if check_word? && @word.save
       flash[:success] = t :success
       redirect_to [:admin, @word]
     else
@@ -63,6 +63,18 @@ class Admin::WordsController < Admin::AdminController
       end
     end
     false
+  end
+
+  def check_word?
+    check = true
+    if @word.answers.blank?
+      check = false
+    else
+      @word.answers.each do |answer|
+        check = false if answer.blank?
+      end
+    end
+    check
   end
 
   def load_category

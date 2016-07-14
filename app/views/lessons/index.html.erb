@@ -1,7 +1,7 @@
 <% if can? :read, @lessons %>
   <div class="container">
     <h1><%= t "lesson.index" %></h1>
-    <nav class="navbar navbar-default search">
+    <nav class="navbar navbar-default search_lesson">
       <%= search_form_for @q,
         {class: "navbar-form", role: "form"} do |f| %>
         <%= f.select :category_id_eq,
@@ -9,22 +9,27 @@
           @q.category_id_eq), {include_blank: t("searches.category")},
           {class: "form-control"} %>
         <ul class="input-group dn-front-lesson-filter">
-          <%= f.label :ready, t(:ready) %>
-          <%= f.radio_button :status_eq, 0, checked: :status %>
-          <%= f.label :doing, t(:doing) %>
-          <%= f.radio_button :status_eq, 1, checked: :status %>
-          <%= f.label :done, t(:done) %>
-          <%= f.radio_button :status_eq, 2, checked: :status %>
+          <p id="lesson_search">
+            <%= f.radio_button :status_eq, 0, checked: :status %>
+            <%= f.label :ready, t(:ready) %>
+
+            <%= f.radio_button :status_eq, 1, checked: :status %>
+            <%= f.label :doing, t(:doing) %>
+
+            <%= f.radio_button :status_eq, 2, checked: :status %>
+            <%= f.label :done, t(:done) %>
+          </p>
         </ul>
         <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
     </nav>
     <table class="table table-bordered">
       <tr>
-        <th><%= sort_link @q, :id, t("#") %></th>
-        <th><%= sort_link @q, :category_id, t("category.category") %></th>
         <th><%= sort_link @q, :created_at, t(:created_at) %></th>
+        <th><%= sort_link @q, :category_id, t("category.category") %></th>
         <th><%= sort_link @q, :status, t(:status) %></th>
+        <th><%= t :times %> (<%= t :minutes %>)</th>
+        <th><%= t :words %></th>
         <th><%= t(:control) %></th>
       </tr>
       <tbody>

@@ -1,4 +1,6 @@
-<%= form_for [@category, @lesson] do |f| %>
-  <%= f.hidden_field :status, value: "doing" %>
-  <%= f.submit t(:start), method: :update, class: "btn btn-primary" %>
+<% if can? :update, @lesson %>
+  <%= form_for [@category, @lesson] do |f| %>
+    <%= f.hidden_field :status, value: "doing" %>
+    <%= f.submit t(:start), method: :update, class: "btn btn-primary" %>
+  <% end %>
 <% end %>
