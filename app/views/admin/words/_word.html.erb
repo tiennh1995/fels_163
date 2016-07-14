@@ -1,10 +1,13 @@
 <% if word.id? %>
-  <h3><%= link_to word.title, [:admin, word] %></h3><hr>
+  <h1><%= link_to word.title, [:admin, word] %></h1>
+  <p>
+    <b><%= t("category.category") %></b > :
+    <%= link_to word.category.name, [:admin, word.category] %>
+  </p>
+  <hr>
   <%= image_tag word.picture.url, size: Settings.size_word unless
     word.picture.url.nil? %>
   <div class="panel-body" id="answers_<%= word.id %>">
-    <ul>
-      <%= render "shared/word_answers", answers: word.answers %>
-    </ul>
+    <%= render "shared/word_answers", answers: word.answers %>
   </div>
 <% end %>

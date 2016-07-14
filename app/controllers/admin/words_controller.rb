@@ -1,6 +1,7 @@
 class Admin::WordsController < Admin::AdminController
   load_and_authorize_resource
-  before_action :load_category, only: [:new, :edit]
+  before_action :load_category, except: [:show, :index, :destroy]
+
 
   def index
     @categories = Category.all
@@ -16,7 +17,7 @@ class Admin::WordsController < Admin::AdminController
   end
 
   def create
-    if check_word? && @word.save
+    if @word.save
       flash[:success] = t :success
       redirect_to [:admin, @word]
     else
@@ -26,10 +27,6 @@ class Admin::WordsController < Admin::AdminController
   end
 
   def edit
-    respond_to do |format|
-      format.html {redirect_to [:admin, @word]}
-      format.js
-    end
   end
 
   def update
@@ -39,8 +36,8 @@ class Admin::WordsController < Admin::AdminController
         format.js
       end
     else
-      load_category
-      render :edit
+      flash[:danger] = t :danger
+      redirect_to [:admin, @word]
     end
   end
 
@@ -57,15 +54,6 @@ class Admin::WordsController < Admin::AdminController
   def word_params
     params.require(:word).permit :title, :category_id, :image,
       answers_attributes: [:id, :title, :is_correct, :_destroy]
-  end
-
-  def check_word?
-    unless @word.answers.nil?
-      @word.answers.each do |answer|
-        return true if answer.is_correct?
-      end
-    end
-    false
   end
 
   def check_word_params?
