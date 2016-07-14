@@ -97,6 +97,7 @@ en:
     created_category: "New category added"
     category: "Category"
   created_at: "Created at"
+  updated_at: "Updated at"
   control: "Control"
   word:
     index: "All Words"
@@ -106,8 +107,7 @@ en:
   searches:
     title: "Search....."
     category: "All category"
-  words:
-    new: "New Word"
+  word_new: "New Word"
   create: "Create"
   save: "Save"
   success: "Success!"
@@ -158,6 +158,7 @@ en:
   follow: "Follow"
   unfollow: "Unfollow"
   activities:
+    all: "All activities"
     title: "All notification"
     follow: " follow "
     new_category: "New category added: "
@@ -182,3 +183,9 @@ en:
       head: "Hi %{name},"
       body: "We are pleased to announce that the lessons Lesson %{id} you have created at 8h ago has been removed because you did not start it."
   site_title: "FELS_163"
+
+  history: "History signup, signin"
+  index: "Index"
+  create: "Create"
+  admin:
+    footer: "Project 2 - E-learning"

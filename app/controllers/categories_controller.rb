@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
     else
       @search = @category.words.ransack params[:q]
       @words = @search.result.page(params[:page]).per Settings.per_page
+      @lesson = @category.lessons.build
     end
   end
 end

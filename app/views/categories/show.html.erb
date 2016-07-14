@@ -10,3 +10,11 @@
     </div>
   </div>
 <% end %>
+<% if can? :create, @lesson %>
+  <td>
+    <%= form_for [@category, @lesson] do |f| %>
+      <%= f.hidden_field :category_id, value: @category.id %>
+      <%= f.submit t(:create_lesson), class: "btn btn-primary" %>
+    <% end %>
+  </td>
+<% end %>

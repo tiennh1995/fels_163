@@ -1,7 +1,7 @@
 <% if can? :manage, @words %>
-  <div class="container">
+  <div class="container col-md-10 col-md-offset-1">
     <h1><%= t "word.index" %></h1>
-    <nav class="navbar navbar-default search">
+    <nav class="navbar navbar-default admin-search">
       <%= search_form_for [:admin, @q],
         {class: "navbar-form", role: "form"} do |f| %>
         <%= f.select :category_id_eq,
@@ -14,7 +14,10 @@
         <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
     </nav>
-    <%= link_to t(:create), new_admin_word_path, class: "btn btn-primary btn-md" %>
+    <div class="admin-action-category">
+      <%= link_to t(:create), new_admin_word_path,
+        class: "btn btn-primary btn-md" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <th><%= sort_link @q, :title, t("word.title") %></th>
