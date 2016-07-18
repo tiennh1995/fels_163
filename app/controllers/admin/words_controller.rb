@@ -2,9 +2,8 @@ class Admin::WordsController < Admin::AdminController
   load_and_authorize_resource
   before_action :load_category, except: [:show, :index, :destroy]
 
-
   def index
-    @categories = Category.all
+    @categories = Category.includes :words
     @q = @words.ransack params[:q]
     @words = @q.result.joins(:category).page(params[:page]).per Settings.per_page
   end
@@ -13,15 +12,13 @@ class Admin::WordsController < Admin::AdminController
   end
 
   def new
-    @word.answers.build
   end
 
   def create
-    if check_word? && @word.save
+    if @word.save
       flash[:success] = t :success
       redirect_to [:admin, @word]
     else
-      flash[:danger] = t :danger
       render :new
     end
   end
@@ -30,13 +27,10 @@ class Admin::WordsController < Admin::AdminController
   end
 
   def update
-    if check_word_params? && @word.update_attributes(word_params)
-      respond_to do |format|
-        format.html {redirect_to [:admin, @word]}
-        format.js
-      end
+    unless @word.update_attributes word_params
+      render :edit
     else
-      flash[:danger] = t :danger
+      flash[:success] = t :success
       redirect_to [:admin, @word]
     end
   end
@@ -52,29 +46,8 @@ class Admin::WordsController < Admin::AdminController
 
   private
   def word_params
-    params.require(:word).permit :title, :category_id, :image,
+    params.require(:word).permit :title, :category_id, :picture,
       answers_attributes: [:id, :title, :is_correct, :_destroy]
-  end
-
-  def check_word_params?
-    unless params[:word][:answers_attributes].nil?
-      params[:word][:answers_attributes].values.each do |p|
-        return true if p["is_correct"] == "1"
-      end
-    end
-    false
-  end
-
-  def check_word?
-    check = true
-    if @word.answers.blank?
-      check = false
-    else
-      @word.answers.each do |answer|
-        check = false if answer.blank?
-      end
-    end
-    check
   end
 
   def load_category

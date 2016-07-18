@@ -7,13 +7,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    if @category.nil?
-      flash[:danger] = t :category_fails
-      redirect_to categories_path
-    else
-      @search = @category.words.ransack params[:q]
-      @words = @search.result.page(params[:page]).per Settings.per_page
-      @lesson = @category.lessons.build
-    end
+    @q = @category.words.ransack params[:q]
+    @words = @q.result.page(params[:page]).per Settings.per_page
+    @lesson = @category.lessons.build
+    @lesson.user = current_user
   end
 end

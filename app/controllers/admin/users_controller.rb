@@ -5,6 +5,8 @@ class Admin::UsersController < Admin::AdminController
     @users = @users.not_admin
     @q = @users.ransack params[:q]
     @users = @q.result.page(params[:page]).per Settings.per_page
+    @activities = PublicActivity::Activity.limit(Settings.per_page)
+      .order created_at: :desc
   end
 
   def destroy

@@ -13,5 +13,8 @@ class UsersController < ApplicationController
     else
       current_user.active_relationships.build
     end
+    @activities = PublicActivity::Activity.all_activity(@user.id)
+      .limit(Settings.per_page).order(created_at: :desc).page(params[:page])
+      .per Settings.per_page
   end
 end
