@@ -7,15 +7,10 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def show
-    if @category.nil?
-      flash[:danger] = t :category_fails
-      redirect_to admin_categories_path
-    else
-      @q = @category.words.ransack params[:q]
-      @words = @q.result.page(params[:page]).per Settings.per_page
-      @word = @category.words.build
-      @word.answers.build
-    end
+    @q = @category.words.ransack params[:q]
+    @words = @q.result.page(params[:page]).per Settings.per_page
+    @word = @category.words.build
+    @word.answers.build
   end
 
   def new
@@ -27,7 +22,6 @@ class Admin::CategoriesController < Admin::AdminController
       Notification.new(@category).notify_new_category
       redirect_to admin_categories_path
     else
-      flash[:danger] = t :danger
       render :new
     end
   end
@@ -35,11 +29,11 @@ class Admin::CategoriesController < Admin::AdminController
   def destroy
     Notification.new(@category).notify_delete_category
     if @category.destroy
-      flash[:success] = t :delele_success
+      flash[:success] = t :success
     else
-      flash[:danger] = t :delete_fail
+      flash[:danger] = t :fail
     end
-    redirect_to :back
+    redirect_to admin_categories_path
   end
 
   private

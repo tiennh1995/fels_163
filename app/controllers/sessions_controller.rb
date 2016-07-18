@@ -1,5 +1,6 @@
 class SessionsController < Devise::SessionsController
   before_action :create_log, only: :destroy
+
   def new
     super
   end

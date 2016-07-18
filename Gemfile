@@ -22,6 +22,8 @@ gem "omniauth-facebook"
 gem "sidekiq"
 gem "public_activity"
 gem "whenever"
+gem "faker", "1.4.2"
+gem "remotipart", "~> 1.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "font-awesome-sass"
 
@@ -40,5 +42,6 @@ group :development do
 end
 group :production do
   gem "pg"
+  gem "rails_12factor"
 end
 
