@@ -3,28 +3,27 @@
     <h1><%= t "category.index" %></h1>
       <nav class="navbar navbar-default admin-search">
       <%= search_form_for [:admin, @q],
-        {class: "navbar-form", role: "form"} do |f| %>
+        {class: "navbar-form", role: "form", remote: true} do |f| %>
         <%= f.label :title_cont, t("category.name"), class: "sr-only" %>
         <%= f.text_field :name_cont,placeholder: t("searches.title"),
           class: "search_form form-control" %>
         <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
     </nav>
-    <div class="admin-action-category">
-      <%= link_to t("category.new"), new_admin_category_path,
-        class: "btn btn-primary btn-md" %>
-      <%= link_to t("layouts.header.add_word"), new_admin_word_path,
-        class: "btn btn-primary btn-md" %>
+    <div class="admin-action-category" id="category-action">
+      <%= render "category_action" %>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
       <tr>
         <th><%= sort_link @q, :name, t("category.name") %></th>
         <th><%= t :number_of_words %></th>
         <th><%= sort_link @q, :created_at, t(:created_at) %></th>
       </tr>
-      <tbody>
+      <tbody id="category-index">
         <%= render "shared/category_index", categories: @categories %>
       </tbody>
     </table>
   </div>
 <% end %>
+<div id="category-modal" class="modal fade"></div>
+<div id="word-modal" class="modal fade"></div>

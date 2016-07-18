@@ -1,7 +1,9 @@
-<div class="col-md-8 col-md-offset-2 word_show">
+<div class="col-md-8 col-md-offset-2 word_show" id="word-show">
   <%= render @word %>
   <hr>
-  <%= link_to t(:edit), edit_admin_word_path(@word), class: "btn btn-primary" %>
+  <%= link_to t(:edit), edit_admin_word_path(@word), class: "btn btn-primary",
+    remote: true %>
   <%= link_to t(:delete), admin_word_path(@word),
     method: :delete, data: {confirm: t(:confirm)}, class: "btn btn-primary" %>
 </div>
+<div id="word-modal" class="modal fade"></div>

@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for [:admin, @category] do |f| %>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for [:admin, @category], remote: true do |f| %>
       <%= render "shared/error_messages", object: @category %>
       <%= f.label t "category.name" %>
       <%= f.text_field :name, placeholder: t("category.newname"),
         class: "form-control" %>
-      <%= f.submit t(:create), class: "btn btn-primary create" %>
+      <%= f.submit t(:create), class: "btn btn-primary button_category" %>
+      <%= link_to t(:cancel), "#", class: "btn btn-danger button_category",
+        data: {dismiss: "modal"} %>
     <% end %>
   </div>
 </div>
