@@ -1,31 +1,35 @@
 <% if can? :manage, @users %>
-  <div class="container col-md-10 col-md-offset-1">
+  <div class="container col-md-8">
     <h1><%= t "users.all" %></h1>
     <nav class="navbar navbar-default admin-search">
       <%= search_form_for [:admin, @q],
-        {class: "navbar-form", role: "form"} do |f| %>
+        {class: "navbar-form", role: "form", remote: true} do |f| %>
         <%= f.label :name_cont, t("users.name") %>
         <%= f.text_field :name_cont,placeholder: t("searches.title"),
           class: "search_form form-control" %>
         <%= f.submit t(:search), class: "btn btn-primary search_button" %>
       <% end %>
     </nav>
-    <div class="admin-action-category">
-      <%= link_to t("category.new"), new_admin_category_path,
-        class: "btn btn-primary btn-md" %>
-      <%= link_to t("layouts.header.add_word"), new_admin_word_path,
-        class: "btn btn-primary btn-md" %>
-    </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
       <tr>
         <th><%= sort_link @q, :name, t("users.name") %></th>
         <th><%= sort_link @q, :email, t("users.email") %></th>
         <th><%= sort_link @q, :created_at, t("users.created_at") %></th>
-        <th><%= t "users.control" %></th>
+        <th><%= t :control %></th>
       </tr>
-      <tbody>
+      <tbody id="user-index">
         <%= render "shared/user_index", users: @users %>
       </tbody>
     </table>
+    <%= paginate @users %>
+  </div>
+  <div class="container col-md-4 activity">
+    <h1><%= t "activities.home-title" %></h1>
+    <ul class="list-group">
+      <%= @activities.blank? ? t("activities.nothing") : render(@activities) %>
+    </ul>
+    <div id="btn-activity" align="center">
+      <%= link_to t("activities.all"), admin_activities_path %>
+    </div>
   </div>
 <% end %>

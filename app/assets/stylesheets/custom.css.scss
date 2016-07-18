@@ -7,18 +7,19 @@ $gray-medium-light: #eaeaea;
 body {
   padding-top: 60px;
   background: #eee !important;
-}
-
-.home {
-  min-height: 600px;
-  margin-right: 20px;
-  margin-left: 20px;
+  font-size: 14px;
 }
 
 section {
   overflow: auto;
 }
 
+.logo {
+  color: #fff !important;
+}
+a.dropdown-menu {
+  color: #000000;
+}
 textarea {
   resize: vertical;
 }
@@ -29,8 +30,13 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+  text-align: center;
 }
 
+.center h6 {
+  margin-bottom: 10px;
+  text-align: center;
+}
 /* login page */
 
 #user_remember_me {
@@ -44,7 +50,8 @@ textarea {
   padding-top:30px;
 }
 .input-group {
-  margin-bottom: 25px;
+  margin-bottom: 5px;
+  margin-right: 40px;
 }
 
 .social-buttons{
@@ -96,7 +103,7 @@ textarea {
 
 .signup-sbtn {
   margin: 0 10px;
-  width: 35%;
+  width: 40%;
 }
 
 /* typography */
@@ -118,6 +125,13 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: $gray-light;
+}
+
+h6 {
+  font-size: 1.5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 p {
@@ -222,31 +236,40 @@ aside {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
 }
-
+select {
+  min-width: 200px;
+}
 table {
   background-color: #fff;
+}
+.content {
+  background-color: #fff;
+}
+thead.thead-default{
+  background-color: #e1e1e1;
 }
 
 .correct_answer {
   @extend .well;
-  background-color: #37b2db;
+  background-color: #5cb85c;
 }
 .search_form {
   width: 70% !important;
+  margin-top: 5px;
 }
 .search_button {
   width: 100px;
+  margin-left: 20px;
 }
 .btn-md {
   margin: 10px 25px;
   margin-left: 0px;
 }
-.search {
-  margin-left: -15px;
-  background-color: #e9ebee;
-}
 .answer {
   margin-left: 40px;
+}
+.word-form {
+  margin-left: 50px;
 }
 .result_table {
   margin-left: -45px;
@@ -268,12 +291,71 @@ label.answer_field {
   padding: 10px;
 }
 
-#lesson_search {
-  margin-top: 20px;
+.lesson_search {
+  margin-top: 5px;
   margin-right: 5px;
+  padding-top: 5px;
 }
 
 .search_lesson {
   background-color: #e9ebee;
   text-align: center;
+}
+
+.answer_show{
+  label{
+    font-weight: normal !important;
+
+  }
+  background-color: #ffffff;
+}
+
+.lesson_show {
+  background-color: #ffffff;
+}
+
+/* user show */
+.user-show {
+  background-color: #a1d490;
+}
+.activity {
+  background: #fff;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-left: 10px;
+}
+#btn-activity {
+  margin: 20px;
+}
+h5.description {
+  text-align: end;
+  font-size: 12px;
+  margin: 0 auto;
+}
+hr {
+  margin: 8px auto;
+}
+.home-content {
+  background-color: #fff;
+}
+.col-md-7.home-content {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.dn-front-word-filter {
+  margin: 5px 20px;
+}
+aside {
+  margin: 5px auto;
+}
+.select-cate {
+  margin-right: 20px;
+}
+
+.start_lesson {
+  margin-bottom: 10px;
+}
+
+.avatar {
+  margin-bottom: 20px;
 }

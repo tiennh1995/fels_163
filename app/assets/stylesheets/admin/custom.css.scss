@@ -4,7 +4,7 @@
 @import "font-awesome";
 
 .dn-content{
-  min-height: 590px!important;
+  min-height: 700px;
 }
 
 .content{
@@ -54,6 +54,11 @@ h2 {
   color: $gray-light;
 }
 
+h6 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -68,7 +73,7 @@ input, textarea, select, .uneditable-input {
   width: 70% !important;
 }
 
-.create {
+.button_category {
   margin-top: 10px;
 }
 
@@ -77,8 +82,17 @@ input, textarea, select, .uneditable-input {
 }
 
 .correct_answer {
-  @extend .well;
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 5px;
   background-color: #37b2db;
+}
+
+.uncorrect_answer {
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: #f5f5f5;
 }
 
 .word_title {
@@ -113,20 +127,47 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 10px;
 }
 
-.button_answer {
-}
-
 .word_answer {
   margin-left: -15px;
   margin-bottom: 10px;
   margin-right: 15px;
 }
 
-.add_field {
+.add_fields {
   margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.remove_fields {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #d43f3a;
 }
 
 .word_show {
   background-color: #fff;
   padding: 30px;
 }
+
+.words_show {
+  margin-bottom: 20px;
+}
+
+.admin_stats {
+  margin-left: 65px;
+}
+
+.create_lesson {
+  float: right !important;
+  position: fixed;
+}
+
+.modal-content{
+  top: 100%;
+  padding: 10px;
+}
+ .btn {
+  margin-bottom: 5px;
+ }

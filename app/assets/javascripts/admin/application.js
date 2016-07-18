@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require bootstrap
 //= require turbolinks
 //= require adminlte
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+  setTimeout(function(){
+    $('#flash').remove();
+  }, 4000);
+});

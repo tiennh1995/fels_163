@@ -1,17 +1,25 @@
 <% if can? :manage, @logs %>
-  <div class="container">
-    <ul>
+  <div class="container col-md-10">
+    <ul class="list-group">
       <% if @logs.blank? %>
         <%= t :nothing %>
       <% else %>
         <% @logs.each do |log| %>
-          <li>
-            <p><%= t :last_ip, ip: log.last_sign_in_ip %></p>
-            <p><%= t :last_sign_in, time: log.last_sign_in_at %></p>
-          </li>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <%= t :last_ip, ip: log.last_sign_in_ip %>
+            </div>
+            <div class="panel-body">
+              <%= t :last_sign_in, time: log.last_sign_in_at %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </ul>
-    <h5><%= t :current_ip, nowip: current_user.current_sign_in_ip %></h5>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <%= t :current_ip, nowip: current_user.current_sign_in_ip %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
 
   resources :words, only: :index
-  resources :users, except: :destroy
   resources :follows, only: [:create, :destroy]
-  resources :lessons, only: :index
   resources :categories, only: [:index, :show] do
     resources :lessons, only: [:show, :create, :update]
   end
-  resources :users, except: [:destroy] do
+  resources :users, except: :destroy do
     resources :activities, only: :index
+    resources :lessons, only: [:index, :show]
   end
+  resources :lessons, only: :index
   namespace :admin do
     root "users#index"
     resources :logs, only: :index
@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     resources :categories, except: [:edit, :update]
     resources :words
     resources :answers, only: :create
+    resources :activities, only: :index
   end
 end

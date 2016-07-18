@@ -3,13 +3,13 @@ width_limit: 200
 height_limit: 200
 number_word: 20
 limit_minutes: 20
-size_word: "100x100"
+size_word: "200x200"
 fillter_words:
   - "learned"
   - "not_learn"
   - "all"
 time_lesson: 1200
-image_user: "90x90"
+image_user: "120x120"
 length_title: 23
 activity:
   window: 2
@@ -17,4 +17,4 @@ relation:
   followers: "followers"
   following: "following"
 time_life: 8
-default_email: "from@example.com"
+default_email: "qt.nv95@gmail.com"
