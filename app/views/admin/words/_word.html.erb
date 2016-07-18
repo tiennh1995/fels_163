@@ -1,13 +1,22 @@
 <% if word.id? %>
-  <h1><%= link_to word.title, [:admin, word] %></h1>
-  <p>
-    <b><%= t("category.category") %></b > :
-    <%= link_to word.category.name, [:admin, word.category] %>
-  </p>
-  <hr>
-  <%= image_tag word.picture.url, size: Settings.size_word unless
-    word.picture.url.nil? %>
-  <div class="panel-body" id="answers_<%= word.id %>">
-    <%= render "shared/word_answers", answers: word.answers %>
+  <div class="row words_show">
+    <% if word.picture.url %>
+      <div class="col-md-5">
+        <%= image_tag word.picture.url, size: Settings.size_word %>
+      </div>
+    <% end %>
+    <div class="col-md-7">
+      <li><h6><%= t("word.title") %> : <%= link_to word.title,
+        [:admin, word] %></h6></li>
+      <li>
+        <h6><%= t("category.category") %> :
+        <%= link_to word.category.name, [:admin, word.category] %></h6>
+      </li>
+    </div>
   </div>
+  <div>
+    <ol class="panel-body" id="answers_<%= word.id %>">
+      <%= render "shared/word_answers", answers: word.answers %>
+    </ol>
+  <div>
 <% end %>

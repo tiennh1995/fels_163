@@ -1,11 +1,12 @@
 <div class="container col-md-10 col-md-offset-1">
-  <h1><%= @category.name %></h1>
+  <h1><%= t "category.category" %> : <%= @category.name %></h1>
   <div class="admin-action-category">
     <%= link_to t("word_new"), new_admin_word_path(category_id: @category.id),
-      class: "btn btn-primary btn-md" %>
-    <%= link_to t(:delete), [:admin, @category], method: :delete,
+      class: "btn btn-primary btn-md", remote: true %>
+    <%= link_to t("category.delete"), [:admin, @category], method: :delete,
       data: {confirm: t(:confirm)}, class: "btn btn-primary btn-md" %>
   </div>
+  <h2><%= t :all_word_of %><%= @category.name %></h2>
   <table class="table table-bordered">
     <thead>
       <th><%= sort_link @q, :title, t("word.title") %></th>
@@ -16,4 +17,6 @@
       <%= render "word_category_index", words: @words %>
     </tr>
   </table>
+  <%= paginate @words %>
 </div>
+<div id="word-modal" class="modal fade"></div>
