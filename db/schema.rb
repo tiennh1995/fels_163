@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20160711043252) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "words", force: :cascade do |t|
@@ -140,6 +139,6 @@ ActiveRecord::Schema.define(version: 20160711043252) do
   end
 
   add_index "words", ["category_id"], name: "index_words_on_category_id"
-  add_index "words", ["title", "category_id"], name: "index_words_on_title_and_category_id", unique: true
+  add_index "words", ["title", "category_id"], name: "index_words_on_title_and_category_id"
 
 end

@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
-  default from: Settings.mail_from
+  default from: Settings.default_email
 
   def statistic_email user
-    @content = {words:user.words_in_month, lesson: user.lesson_in_month,
+    @content = {words: user.words_in_month, lesson: user.lesson_in_month,
       categories: user.category_in_month, name: user.name}
     mail to: user.email,
       subject: I18n.t("user_mailer.send_result.subject")
