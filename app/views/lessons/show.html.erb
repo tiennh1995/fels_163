@@ -1,16 +1,20 @@
 <% if can? :read, @lesson %>
   <div class="dn-front-group">
-    <h1><%= t("lesson.title") %> <%= @lesson.id %></h1>
-    <div class="col-md-3">
-      <%= image_tag current_user.image.url, class: "dn-lesson-img" %>
-      <strong class="text-capitalize dn-text-lesson"><%= current_user.name %>
-      </strong>
+    <div class="col-md-2">
+      <h6>
+        <%= image_tag current_user.image.url, class: "dn-lesson-img" %>
+        <br>
+        <strong class="text-capitalize dn-text-lesson"><%= current_user.name %>
+        </strong>
+      </h6>
     </div>
-    <div class="col-md-6 col-md-offset-1">
-      <p>
+    <div class="col-md-7 col-md-offset-0 answer_show">
+      <h1><%= t "lesson.title" %> <%= @lesson.id %></h1>
+      <h2>
         <b><%= t "category.category" %></b> :
         <b><%= @lesson.category.name %></b>
-      </p>
+      </h2>
+      <hr>
       <div id="lesson_<%= @lesson.id %>">
         <% if @lesson.done? %>
           <%= render "show_result" %>

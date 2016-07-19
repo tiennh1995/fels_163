@@ -32,6 +32,10 @@
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
     </fieldset>
-    <%= f.submit t(:save), class: "form-control" %>
+    <%= f.label :image %>
+    <div class="avatar">
+      <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
+    </div>
+    <%= f.submit t(:save), class: "btn btn-primary form-control" %>
   <% end %>
 </div>
