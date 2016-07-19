@@ -4,17 +4,24 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to t("layouts.header.home"), root_path %></li>
+          <li>
+            <%= link_to t("layouts.header.home"), root_path, class: "logo" %>
+          </li>
           <li><%= link_to t("layouts.header.category"),
-            categories_path %></li>
-          <li><%= link_to t("layouts.header.words"), words_path %></li>
+            categories_path, class: "logo" %></li>
+          <li>
+            <%= link_to t("layouts.header.words"), words_path, class: "logo" %>
+          </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= t("layouts.header.account") %> <b class="caret"></b>
+            <a href="#" class="dropdown-toggle logo" data-toggle="dropdown">
+              <%= current_user.name %><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+              <li><%= link_to t("layouts.header.activity"),
+                user_activities_path(current_user) %>
+              </li>
               <li><%= link_to t("layouts.header.lessons"),
-                lessons_path %></li>
+                user_lessons_path(current_user) %></li>
               <li><%= link_to t("layouts.header.users"), users_path %></li>
               <li class="divider"></li>
               <li><%= link_to t("layouts.header.profile"),
@@ -27,7 +34,8 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t("layouts.header.login"), new_user_session_path %>
+          <li>
+            <%= link_to t("layouts.header.login"), new_user_session_path %>
           </li>
         <% end %>
       </ul>

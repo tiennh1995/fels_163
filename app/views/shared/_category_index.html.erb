@@ -1,4 +1,4 @@
-<% categories.each do |category| %>
+<% categories.includes(:words).each do |category| %>
   <tr>
     <td><%= link_to category.name, current_user.is_admin? ?
       [:admin, category] : category %></td>
@@ -6,4 +6,3 @@
     <td><%= l category.created_at, format: :default %></td>
   </tr>
 <% end %>
-<%= paginate categories %>

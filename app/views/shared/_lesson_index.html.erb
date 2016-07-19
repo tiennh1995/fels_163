@@ -1,14 +1,14 @@
-<% lessons.each do |lesson| %>
+<% lessons.includes(:results).each do |lesson| %>
   <tr>
     <td><%= l lesson.created_at, format: :long %></td>
     <td><%= link_to lesson.category.name, lesson.category %></td>
     <td><%= lesson.status %></td>
-    <td><%= Settings.limit_minutes %></td>
-    <td><%= Settings.number_word %></td>
-
+    <td><%= t "times.time",time: Settings.limit_minutes %></td>
+    <td><%= lesson.results.size %></td>
     <td>
-      <%= link_to t(:show), [lesson.category, lesson] %>
+      <%= link_to t(:show), [lesson.category, lesson], class: "btn btn-success",
+        data: {turbolinks: false} %>
     </td>
   </tr>
 <% end %>
-<%= paginate lessons %>
+

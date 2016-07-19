@@ -1,21 +1,30 @@
 <% if can? :read, @user %>
   <div class="row">
-    <aside class="col-md-5">
-      <section>
-        <h1>
-          <%= link_to image_tag(@user.image.url, size: Settings.image_user),
-            @user %>
-          <%= @user.name %>
-        </h1>
-      </section>
+    <aside class="center">
+      <div class="col-md-4 user-show">
+        <section>
+          <h1>
+            <%= link_to image_tag(@user.image.url, size: Settings.image_user),
+              @user %>
+            <br>
+            <%= @user.name %>
+          </h1>
+        </section>
       <section class="stats">
         <%= render "shared/stats" %>
       </section>
       <%= render "follow_form" unless current_user.is_admin? %>
+      </div>
     </aside>
-    <aside class="col-md-5 activity">
-      <h3><%= t "activities.title" %></h3>
-      <div class="span2 row">
+    <aside>
+      <div class="col-md-6 col-md-offset-1 activity">
+        <h3 align="center"><%= t "activities.home-title" %></h3>
+        <ul class="list-group">
+          <%= render @activities if can? :read, @activities %>
+        </ul>
+        <div id="btn-activity" align="center">
+          <%= link_to t("activities.all"), user_activities_path(current_user) %>
+        </div>
       </div>
     </aside>
   </div>
