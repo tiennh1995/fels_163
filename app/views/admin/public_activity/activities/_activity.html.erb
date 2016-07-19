@@ -1,0 +1,13 @@
+<li class="list-group-item">
+  <h5>
+    <%= link_to truncate(activity.owner.name, length: Settings.length_title),
+      [:admin, activity.owner] if activity.owner.present? %>
+    <%= activity_title activity %>
+    <%= link_to_object activity %>
+  </h5>
+  <h5 class="description">
+    <%= t "times.posted" %>
+    <%= time_ago_in_words activity.created_at %>
+    <%= t "times.ago" %>
+  </h5>
+</li>
