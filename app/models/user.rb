@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :validatable,
     :trackable, :omniauthable
 
-  has_many :logs
-  has_many :identities
+  has_many :logs, dependent: :destroy
+  has_many :identities, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :lessons, dependent: :destroy
   has_many :active_relationships, class_name: Follow.name,

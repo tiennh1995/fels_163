@@ -32,6 +32,10 @@ class Lesson < ActiveRecord::Base
     results.size
   end
 
+  def load_answer_correct
+    Result.sum_correct id
+  end
+
   private
   def create_activity_lesson
     create_activity key: "new_lesson"

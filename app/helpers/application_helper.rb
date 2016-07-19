@@ -9,12 +9,13 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
       render(association.to_s.singularize + "_fields", f: builder)
     end
-    link_to name, "#", class: "add_fields",
-      data: {id: id, fields: fields.gsub("\n", "")}
+    link_to ("<span class='glyphicon glyphicon-plus small'></span>").html_safe,
+      "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")}
+
   end
 
   def answer_class answer
-    answer.try(:is_correct?) ? "correct_answer" : "well"
+    answer.try(:is_correct?) ? "correct_answer" : "uncorrect_answer"
   end
 
   def get_answer_correct word
@@ -31,7 +32,8 @@ module ApplicationHelper
       link_to t("error._error"), help_path
     else
       object = object.category if object.class == Lesson
-      link_to truncate(object.name, length: Settings.length_title), object
+      link_to truncate(object.name, length: Settings.length_title),
+        current_user.try(:is_admin?) ? [:admin, object] : object
     end
   end
 

@@ -11,32 +11,22 @@
       <li>
         <%= link_to admin_users_path do %>
           <i class="glyphicon glyphicon-user"></i>
-          <span><%= t :show_user %></span>
+          <span><%= t "users.all" %></span>
         <% end %>
       </li>
 
-      <li class="treeview">
-        <a href="#">
+      <li>
+        <%= link_to admin_categories_path do %>
           <i class="glyphicon glyphicon-tasks"></i>
-          <span><%= t "admin.category" %></span>
-          <i class="glyphicon glyphicon-chevron-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li><%= link_to t(:index), admin_categories_path %></li>
-          <li><%= link_to t(:create), new_admin_category_path %></li>
-        </ul>
+          <span><%= t "category.index" %></span>
+        <% end %>
       </li>
 
-      <li class="treeview">
-        <a href="#">
+      <li>
+        <%= link_to admin_words_path do %>
           <i class="glyphicon glyphicon-list-alt"></i>
-          <span><%= t "admin.word" %></span>
-          <i class="glyphicon glyphicon-chevron-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li><%= link_to t(:index), admin_words_path %></li>
-          <li><%= link_to t(:create), new_admin_word_path %></li>
-        </ul>
+          <span><%= t "word.index" %></span>
+        <% end %>
       </li>
     </ul>
   </section>

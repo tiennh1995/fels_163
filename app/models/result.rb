@@ -11,6 +11,6 @@ class Result < ActiveRecord::Base
   end
   scope :sum_correct, ->(lesson_id) do
     where("lesson_id = ? AND results.answer_id IN (SELECT id FROM answers
-     WHERE is_correct = 't' AND word_id = results.word_id)").size
+     WHERE is_correct = 't' AND word_id = results.word_id)", lesson_id).size
   end
 end
