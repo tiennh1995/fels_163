@@ -5,10 +5,38 @@
       class: "btn btn-lg btn-primary" %>
   </div>
 <% else %>
-  <div class="col-md-4">
-    <h1><%= t("activities.title") %></h1>
-    <%= render @activities %>
-    <%= link_to t("activities.all"), user_activities_path(current_user),
-      class: "btn btn-primary form-control" %>
-  </div>
+  <aside>
+    <div class="col-md-7 home-content">
+      <h1><%= t "lesson.recent" %></h1>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-default">
+          <tr>
+            <th><%= t :created_at %></th>
+            <th><%= t "category.category" %></th>
+            <th><%= t :status %></th>
+            <th><%= t "times.time_label" %></th>
+            <th><%= t :words %></th>
+            <th><%= t :control %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render "shared/lesson_index", lessons: @lessons %>
+        </tbody>
+      </table>
+      <div id="btn-activity" align="center">
+        <%= link_to t("layouts.header.lessons"), user_lessons_path(current_user) %>
+      </div>
+    </div>
+  </aside>
+  <aside>
+    <div class="col-md-4 activity">
+      <h1><%= t "activities.home-title" %></h1>
+      <ul class="list-group">
+        <%= @activities.blank? ? t("activities.nothing") : render(@activities) %>
+      </ul>
+      <div id="btn-activity" align="center">
+        <%= link_to t("activities.all"), user_activities_path(current_user) %>
+      </div>
+    </div>
+  </aside>
 <% end %>

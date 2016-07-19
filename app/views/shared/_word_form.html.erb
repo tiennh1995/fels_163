@@ -1,39 +1,47 @@
 <fieldset>
-  <%= form_for [:admin, @word] do |f| %>
-    <%= render "shared/error_messages", object: @word %>
-    <div class="category">
-      <%= f.label :category, class: "control-laber category_label" %>
-      <% if @category.nil? %>
-        <%=  f.select :category_id, @categories.collect {|category|
-          [category.name, category.id]},{},
-          class: "form-control collect_new_word" %>
-      <% else %>
-        <%= f.text_field(:category_id, value: "#{@category.name}",
-          disabled: true, class: "form-control") %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for [:admin, @word], remote: true,
+        authenticity_token: true do |f| %>
+
+        <%= render "shared/error_messages", object: @word %>
+
+        <div class="category">
+          <%= f.label :category, class: "control-laber category_label" %>
+          <% if @category.nil? %>
+            <%=  f.select :category_id, @categories.collect {|category|
+              [category.name, category.id]}, {},
+              class: "form-control collect_new_word" %>
+          <% else %>
+            <%= f.text_field :category_id, value: "#{@category.name}",
+              disabled: true, class: "form-control" %>
+          <% end %>
+        </div>
+
+        <div class="title">
+          <%= f.label :title, class: "control-laber" %>
+          <%= f.text_field :title, placeholder: t("word.newtitle"),
+            class: "form-control word_title" %>
+        </div>
+
+        <div class="image" id="image">
+          <%= f.label :picture %>
+          <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
+            class: "image_word" %>
+        </div>
+
+        <div id="answers">
+          <%= f.fields_for :answers do |builder| %>
+            <%= render "answer_fields", f: builder %>
+          <% end %>
+        </div>
+
+        <%= link_to_add_fields f, :answers %>
+
+        <%= f.submit t(:save), class: "form-control btn btn-primary" %>
+        <%= link_to t(:cancel), "#", class: "form-control btn btn-danger",
+          data: {dismiss: "modal"} %>
       <% end %>
     </div>
-
-    <div class="title">
-      <%= f.label :title, class: "control-laber" %>
-      <%= f.text_field :title, class: "form-control word_title" %>
-    </div>
-
-    <div class="image">
-      <%= f.label :image %>
-      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png",
-        class: "image_word" %>
-    </div>
-
-    <div id="answers">
-      <%= f.fields_for :answers do |builder| %>
-        <%= render "answer_fields", f: builder %>
-      <% end %>
-    </div>
-
-    <div class="add_field">
-      <%= link_to_add_fields t("answer.new"), f, :answers %>
-    </div>
-
-    <%= f.submit t(:save), class: "form-control btn btn-primary" %>
-  <% end %>
+  </div>
 </fieldset>
