@@ -17,7 +17,7 @@
     <br>
     <% if can? :update, @lesson %>
       <%= f.submit t(:finish), method: :update,
-        data: {confirm: t(:confirm)}, class: "btn btn-primary" %>
+        data: {confirm: t(:confirm)}, class: "btn btn-primary form-control" %>
     <% end %>
   <% end %>
 </ol>

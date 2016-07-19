@@ -1,5 +1,9 @@
+<p>
+  <b><%= t :answer_true %></b><%= @number_correct %> /
+  <%= @lesson.results.size %>
+</p>
 <hr>
-<table class="table result_table">
+<table class="table">
   <thead>
     <th><%= t :words %></th>
     <th><%= t :your_answer %></th>
@@ -10,8 +14,7 @@
       <tr class=<%= answer_class result.answer %>>
         <td><%= result.word.title %></td>
         <td><%= result.answer.present? ? result.answer.title : "" %></td>
-        <td><%= get_answer_correct(result.word).title %>
-        </td>
+        <td><%= get_answer_correct(result.word).title %></td>
       </tr>
     <% end %>
   </tbody>

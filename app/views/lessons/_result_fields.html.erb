@@ -2,8 +2,10 @@
 <ul class="list-unstyled">
   <% f.object.word.answers.each do |answer| %>
     <li id="<%= f.object.word.id %>" onchange="set_number(this.id)">
-      <%= f.radio_button :answer_id, answer.id %>
-      <%= f.label :answer, answer.title, "chb dn-admin-wordanswer-check" %>
+      <label class="radio-inline">
+        <%= f.radio_button :answer_id, answer.id %>
+        <%= answer.title %>
+      </label>
     </li>
   <% end %>
 </ul>

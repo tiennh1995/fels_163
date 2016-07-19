@@ -1,24 +1,30 @@
 <% if can? :read, @categories %>
-  <div class="container">
+  <div class="container content">
     <h1><%= t "category.index" %></h1>
-    <nav class="navbar navbar-default search">
-      <%= search_form_for @q, {class: "navbar-form", role: "form"} do |f| %>
-        <%= f.label :title_cont, t("category.name"), class: "sr-only" %>
-        <%= f.text_field :name_cont,placeholder: t("searches.title"),
-          class: "search_form form-control" %>
-        <%= f.submit t(:search), class: "btn btn-primary search_button" %>
-      <% end %>
-    </nav>
-    <table class="table table-bordered">
-      <tr>
-        <th><%= sort_link @q, :name, t("category.name") %></th>
-        <th><%= t :number_of_words %></th>
-        <th><%= sort_link @q, :created_at, t(:created_at) %></th>
-      </tr>
-      <tbody>
-        <%= render "shared/category_index", categories: @categories %>
-      </tbody>
-    </table>
-    <%= paginate @categories %>
+    <div class="col-md-10 col-md-offset-1">
+      <nav class="navbar navbar-default">
+        <div align="center">
+          <%= search_form_for @q, {class: "navbar-form", role: "form"} do |f| %>
+            <%= f.label :title_cont, t("category.name"), class: "sr-only" %>
+            <%= f.text_field :name_cont,placeholder: t("searches.title"),
+              class: "search_form form-control" %>
+            <%= f.submit t(:search), class: "btn btn-primary search_button" %>
+          <% end %>
+        </div>
+      </nav>
+      <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-default">
+          <tr>
+            <th><%= sort_link @q, :name, t("category.name") %></th>
+            <th><%= t :number_of_words %></th>
+            <th><%= sort_link @q, :created_at, t(:created_at) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render "shared/category_index", categories: @categories %>
+        </tbody>
+      </table>
+      <%= paginate @categories %>
+    </div>
   </div>
 <% end %>

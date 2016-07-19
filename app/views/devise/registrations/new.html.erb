@@ -17,7 +17,7 @@
         <div class="form-group">
           <%= f.label :name, class: "col-md-2 control-label" %>
           <div class="col-md-9">
-            <%= f.text_field :email, autofocus: true, class: "form-control",
+            <%= f.text_field :name, autofocus: true, class: "form-control",
               placeholder: t("users.name") %>
           </div>
         </div>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div id="social-signup" class="form-group">
-          <div class="col-md-offset-2 col-md-9">
+          <div class="col-md-12">
             <span class="signup-sbtn"><%= t "signup.or" %></span>
             <% if devise_mapping.omniauthable? %>
               <% resource_class.omniauth_providers.each do |provider| %>
