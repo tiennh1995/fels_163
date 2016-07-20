@@ -37,6 +37,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "shoulda-matchers", "~> 3.1"
   gem "byebug"
+  gem "simplecov", require: false
 end
 
 group :development do
@@ -47,4 +48,3 @@ group :production do
   gem "pg"
   gem "rails_12factor"
 end
-

@@ -28,22 +28,12 @@ class User < ActiveRecord::Base
 
   scope :not_admin, ->{where is_admin: false}
 
-  %w(facebook twitter).each do |provider|
-    define_method provider do |provider|
-      identities.find_by provider: provider
-    end
-
-    define_method "#{provider}_client" do |provider|
-      binding.eval("@#{provider}_client ||= #{provider.capitalize}.client(access_token: #{provider}.accesstoken)")
-    end
-  end
-
   include PublicActivity::Model
   tracked
 
   def password_required?
     return false if email.blank?
-    !persisted? || !password.nil? || !password_cofirmation.nil?
+    !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
   def email_required?
@@ -72,12 +62,5 @@ class User < ActiveRecord::Base
 
   def category_in_month
     Lesson.in_month(self.id).distinct.count :category_id
-  end
-
-  private
-  def destroy_user_activities
-    PublicActivity::Activity.user(self).each do |activity|
-      activity.destroy!
-    end
   end
 end
