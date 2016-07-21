@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     resources :activities, only: :index
     resources :lessons, only: [:index, :show]
   end
-  resources :lessons, only: :index
   namespace :admin do
     root "users#index"
     resources :logs, only: :index
