@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   resources :users, except: :destroy do
     resources :activities, only: :index
-    resources :lessons, only: [:index, :show]
+    resources :lessons, only: :index
   end
   namespace :admin do
     root "users#index"

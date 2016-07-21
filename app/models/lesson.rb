@@ -5,6 +5,9 @@ class Lesson < ActiveRecord::Base
   has_many :results, dependent: :destroy
   has_many :words, through: :results
 
+  validates :user, presence: true
+  validates :category, presence: true
+
   enum status: [:ready, :doing, :done]
 
   before_create :load_words
