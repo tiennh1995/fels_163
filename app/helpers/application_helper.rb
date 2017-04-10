@@ -11,7 +11,6 @@ module ApplicationHelper
     end
     link_to ("<span class='glyphicon glyphicon-plus small'></span>").html_safe,
       "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")}
-
   end
 
   def answer_class answer

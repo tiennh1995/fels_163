@@ -26,13 +26,13 @@ followers.each {|follower| follower.follow(user)}
 end
 
 20.times do |n|
-  title = Faker::Name.name
-  word = Word.create! title: title, category_id: 1
-  word_id = word.id
-  answer_correct = Faker::Lorem.word
-  Answer.create! title: answer_correct, is_correct: true, word_id: word_id
+  answers = Array.new
+  answer_correct = Answer.new title: Faker::Lorem.word, is_correct: true
+  answers.push answer_correct
   3.times do |t|
-    answer_incorrect = Faker::Lorem.word
-    Answer.create! title: answer_incorrect, is_correct: false, word_id: word_id
+    answer_incorrect = Answer.new title: Faker::Lorem.word, is_correct: false
+    answers.push answer_incorrect
   end
+  word = Word.create! title: Faker::Name.name, category_id: 1,
+    answers_attributes: answers
 end

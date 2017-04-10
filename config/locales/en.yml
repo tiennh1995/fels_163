@@ -37,6 +37,9 @@ en:
   sign_up: "Sign up"
   characters_minimum: "(%{number} characters_minimum)"
 
+  project:
+    title: "E-learning"
+
   static_pages:
     about:
       title: "About"

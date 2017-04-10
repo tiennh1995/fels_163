@@ -21,6 +21,7 @@
               placeholder: t("users.name") %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :email, class: "col-md-2 control-label" %>
           <div class="col-md-9">
@@ -28,6 +29,7 @@
               placeholder: t("users.email") %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :password, class: "col-md-2 control-label", id: "pw-field" %>
           <div class="col-md-9">
@@ -40,6 +42,7 @@
               class: "form-control signup", placeholder: t("signup.password") %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :password_confirmation, class: "col-md-2 control-label" %>
           <div class="col-md-9">
@@ -47,11 +50,13 @@
               class: "form-control signup", placeholder: t("signup.confirmation") %>
           </div>
         </div>
+
         <div class="form-group">
           <div class="col-md-offset-4 col-md-9">
             <%= f.submit t(:sign_up), class: "btn btn-info signup-sbtn" %>
           </div>
         </div>
+
         <div id="social-signup" class="form-group">
           <div class="col-md-12">
             <span class="signup-sbtn"><%= t "signup.or" %></span>
